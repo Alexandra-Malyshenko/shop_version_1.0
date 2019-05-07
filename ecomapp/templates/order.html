@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h3 class="text-center">Оформление заказа</h3>
+<br>
+<div class="col-sm-4">
+    <h2 class="text-center">Заполните форму</h2>
+    <form class="order-form" action="." method="POST">
+        {% csrf_token %}
+
+        {{ form.first_name|as_crispy_field }}
+
+        {{ form.last_name|as_crispy_field }}
+
+        {{ form.phone|as_crispy_field }}
+
+
+        {{ form.email|as_crispy_field }}
+
+        {{ form.address|as_crispy_field }}
+
+        {{ form.comments|as_crispy_field }}
+
+        <input type="submit" class="btn btn-success" value="Подтвердить заказ">
+
+    </form>
+</div>
+<div class="col-sm-8">
+    <h2 class="text-center">Ваш заказ</h2>
+    <table class="table table-striped table-hover">
+        <tr>
+            <td class="text-center"><strong>Товар</strong></td>
+            <td class="text-center"><strong>Количество</strong></td>
+            <td class="text-center"><strong>Цена</strong></td>
+            <td class="text-center"><strong>Полная цена</strong></td>
+            <td class="text-center"></td>
+        </tr>
+        {% for item in cart %}
+            <tr>
+                <td class="text-center">{{ item.product.title }}</td>
+                <td class="text-center">{{ item.quantity }}</td>
+                <td class="text-center">{{ item.price }} грн.</td>
+                <td class="text-center">{{ item.total_price }}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+        <tr class="table bg-success" style="background-color: palegreen">
+            <td></td>
+            <td></td>
+            <td class="text-center"><strong>Итого: </strong></td>
+            <td class="text-center" id="cart-total-price"><strong>{{ cart.get_total_price }} грн.</strong></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

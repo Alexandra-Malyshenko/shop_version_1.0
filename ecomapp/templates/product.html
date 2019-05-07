@@ -1,0 +1,25 @@
+{% extends  'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-sm-4">
+    <img src="{{ product.image.url }}" style="width:80%; height: 300px ">
+</div>
+<div class="col-sm-8">
+    <h3 class="text-center">{{ product.title }}</h3>
+    <p>{% lorem %}</p>
+    <p>{% lorem %}</p>
+    <hr>
+    <p style="font-size: 25px">Цена: <strong>{{ product.price }} грн.</strong></p>
+    {% if request.user.is_authenticated %}
+    <form action="{% url "cart:CartAdd" product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <button class="btn btn-danger">Добавить в корзину</button>
+    </form>
+    {% else %}
+    <p class="text-center">Заказывать товар могут только авторизированные пользователи. Пожалуйста <a href="{% url 'login' %}">войдите</a> в свой аккаунт или <a href="{% url 'registration' %}">зарегистрируйтесь</a>.</p>
+    {% endif %}
+
+</div>
+{% endblock content %}

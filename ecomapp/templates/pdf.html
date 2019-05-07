@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+  <body>
+    <h1 class="text-center">Интернет магазин - Масла для автолюбителей</h1>
+    <p>
+      Номер заказа: <b>{{ order.id }}</b> <br>
+      <span class="secondary">
+        Дата формирования заказа: {{ order.created }}
+      </span>
+    </p>
+    <br>
+    <h3>Данные о покупателе</h3>
+    <table class="table">
+        <tr>
+            <td>Имя:</td>
+            <td>{{ order.first_name }}</td>
+        </tr>
+        <tr>
+            <td>Фамилия:</td>
+            <td>{{ order.last_name }}</td>
+        </tr>
+        <tr>
+            <td>Телефон:</td>
+            <td>{{ order.phone }}</td>
+        </tr>
+        <tr>
+            <td>Электронная почта:</td>
+            <td>{{ order.email }}</td>
+        </tr>
+        <tr>
+            <td>Адрес доставки:</td>
+            <td>{{ order.address }}</td>
+        </tr>
+        {% if order.comments != 'no comments' %}
+        <tr>
+            <td>Комментарии к заказу:</td>
+            <td> {{ order.comments }}</td>
+        </tr>
+        {% endif %}
+    </table>
+    <br>
+    <h3 class="text-center">Купленные товары</h3>
+    <table class="table">
+      <thead class="text-center">
+        <tr>
+          <th>Товар</th>
+          <th>Стоимость</th>
+          <th>Количество</th>
+          <th>Всего</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in order.items.all %}
+          <tr class="row{% cycle "1" "2" %}">
+            <td>{{ item.product.title }}</td>
+            <td>{{ item.price }} грн.</td>
+            <td>{{ item.quantity }} </td>
+            <td>{{ item.get_cost }} грн.</td>
+          </tr>
+        {% endfor %}
+        <tr class="total">
+          <td colspan="3">Всего:</td>
+          <td class="num">{{ order.get_total_cost }} грн.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <span><strong>Статус заказа: {{ order.status }}</strong></span>
+  </body>
+</html>

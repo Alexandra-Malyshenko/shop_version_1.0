@@ -1,0 +1,29 @@
+{% extends  'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-sm-12">
+    <h2>{{ category.name }}</h2>
+    <hr>
+    {% for product in products %}
+    <div class="col-sm-4">
+        <a href="{{ product.get_absolute_url }}" style="text-decoration: none; color: black">
+            <img src="{{ product.image.url }}" style="width: 100%; height: 350px">
+            <h4 class="text-center">{{ product.title }}</h4>
+            <p class="text-center" style="font-size: 25px">Цена: <strong>{{ product.price }} грн.</strong></p>
+        </a>
+        {% if request.user.is_authenticated %}
+            <form action="{% url "cart:CartAdd" product.id %}" method="post">
+                {% csrf_token %}
+                <div class="text-center">
+                    <label class="text-left">Кол-во: {{ cart_product_form.quantity }}</label>
+                    <button class="btn btn-warning">Добавить в корзину</button>
+                </div>
+            </form>
+        {% else %}
+        <p class="text-center">Заказывать товар могут только авторизированные пользователи. Пожалуйста <a href="#">войдите</a> в свой аккаунт или <a href="#">зарегистрируйтесь</a>.</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
