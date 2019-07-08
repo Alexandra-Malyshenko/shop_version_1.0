@@ -2,10 +2,28 @@
 {% load static %}
 
 {% block content %}
-
-<div class="col-sm-8 col-sm-offset-2">
-    <h3 class="text-center"> Спасибо за Ваш заказ! Он принят в обработку. В ближайшее время менеджер с Вами свяжеться.</h3>
-    <p class="text-center"><a href="/"><button class="btn btn-default">Вернуться к покупкам</button></a></p>
-</div>
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Вернуться на главную страницу</h1>
+					<nav class="d-flex align-items-center">
+						<a href="/">Главная<span class="lnr lnr-arrow-right"></span></a>
+						<a href=""></a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+    <section class="order_details section_gap">
+		<div class="container">
+            <div class="col-sm-12 col-sm-offset-2 col-lg-12 col-lg-offset-2 col-md-12 col-md-offset-2">
+                <h3 class="text-center"> Спасибо за Ваш заказ! Он принят в обработку. В ближайшее время менеджер с Вами свяжеться.</h3>
+                <p class="text-center"><a href="/"><button class="primary-btn">Вернуться к покупкам</button></a></p>
+            </div>
+        </div>
+    </section>
 
 {% endblock content %}

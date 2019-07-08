@@ -1,192 +1,405 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx" class="no-js">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Shop Homepage - Start Bootstrap Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="{% static 'css/shop-homepage.css' %}" rel="stylesheet">
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static 'img/castrol-logo.png' %}">
+	<!-- Author Meta -->
+	<meta name="author" content="CodePixar">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Castrol Shop</title>
+	<!--CSS ============================================= -->
+	<link rel="stylesheet" href="{% static "css/linearicons.css" %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'css/nouislider.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/ion.rangeSlider.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/ion.rangeSlider.skinFlat.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static "css/main.css" %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Масла для автолюбителя</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                   {% if not request.get_full_path == '/' %}
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Категории<span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        {% for cat in categories %}
-                          <li><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
-                        {% endfor %}
-                      </ul>
-                    </li>
-                   {% endif %}
-                    <li>
-                        <a href="#">Сервисы</a>
-                    </li>
-                    <li>
-                        <a href="#">Контакты</a>
-                    </li>
-                    {% if not request.user.is_authenticated %}
-                    <li>
-                        <p class="navbar-text">Здравствуйте, гость!</p>
-                    </li>
-                    <li>
-                        <a href="{% url 'login' %}">Войти</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'registration' %}">Регистрация</a>
-                    </li>
-                    {% else %}
-                    <li>
-                       <p class="navbar-text">Здравствуйте, {{ request.user }}!</p>
-                    </li>
-                    <li>
-{#                        <a href="{% url 'account' %}">Личный кабинет</a>#}
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}">Выйти</a>
-                    </li>
-                    {% endif %}
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="cart">
-                            {% with total_items=cart|length %}
-                                {% if cart|length > 0 %}
-                                    <a href="{% url 'cart:CartDetail'%}">Корзина <span class="badge" > {{ total_items }} </span></a>
-                                {% else %}
-                                    <a href="{% url 'cart:CartDetail'%}">Корзина <span class="badge"> 0 </span></a>
-                                {% endif %}
-                            {% endwith %}
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-        {% block content %}
-        <div class="row">
-
-            <div class="col-md-3">
-                <p class="lead">Shop Name</p>
-                <div class="list-group">
-                    {% for cat in categories %}
-                    <a href="{{ cat.get_absolute_url }}" class="list-group-item">{{ cat.name }}</a>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div class="col-md-9">
-
-                <div class="row carousel-holder">
-
-                    <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                {% for p in products %}
-                                    {% if forloop.first %}
-                                        <div class="item active">
-                                            <a href="{{ p.get_absolute_url }}"><img class="slide-image" src="{{ p.image.url }}"
-                                                                                          alt="" style="padding-left: 260px; height: 300px"></a>
-                                        </div>
-                                    {% else %}
-                                        <div class="item">
-                                            <a href="{{ p.get_absolute_url }}"><img class="slide-image" src="{{ p.image.url }}"
-                                                                                              alt="" style="padding-left: 260px; height: 300px"></a>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev" style="background: transparent">
-                                <span class="glyphicon glyphicon-chevron-left" style="color: black"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next" style="background: transparent">
-                                <span class="glyphicon glyphicon-chevron-right" style="color: black"></span>
-                            </a>
+	<!-- Start Header Area -->
+	<header class="header_area">
+	<div class="header_area sticky-header">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light main_box">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<a class="navbar-brand logo_h" href="/"><img src="{% static 'img/logo.png' %}" alt=""></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <div class="top_bar_icon">
+                            <i class="fas fa-mobile-alt"></i> +38 068 005 3570
                         </div>
-                    </div>
+{#                        <div class="top_bar_icon">#}
+{#                            <i class="far fa-envelope"></i> fastsales@gmail.com#}
+{#                        </div>#}
+						<ul class="nav navbar-nav menu_nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="/">Главная</a></li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Категории</a>
+								<ul class="dropdown-menu">
+                                    {% for cat in categories %}
+                                    <li class="nav-item"><a class="nav-link" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+                                    {% endfor %}
+								</ul>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Контакты</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="nav-item"><a href="{% url 'cart:CartDetail' %}" class="cart"><i class="fas fa-cart-arrow-down" style="font-size: 20px"></i></a></li>
+							<li class="nav-item">
+                                <button class="search" ><span class="lnr lnr-magnifier" id="search"></span></button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div class="search_input" id="search_input_box">
+			<div class="container">
+				<form class="d-flex justify-content-between" action="{% url 'product_search' %}" method="get">
+					<input type="text" class="form-control" id="search_input" name="q" placeholder="Search Here">
+					<button type="submit" class="btn"></button>
+					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+				</form>
+			</div>
+		</div>
+	</div>
+    </header>
+	<!-- End Header Area -->
+{% block content %}
+	<!-- start banner Area -->
+	<section class="banner-area">
+		<div class="container">
+			<div class="row fullscreen align-items-center justify-content-start">
+				<div class="col-lg-12">
+					<div class="active-banner-slider owl-carousel">
+						<!-- single-slide -->
+						<div class="row single-slide align-items-center d-flex">
+							<div class="col-lg-5 col-md-6">
+								<div class="banner-content">
+									<h1>Выбери масло <br>для машины!</h1>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+									<div class="add-bag d-flex align-items-center">
+										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
+										<span class="add-text text-uppercase">Add to Bag</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="banner-img">
+									<img class="img-fluid" src="{% static 'img/banner/banner-img-2.png' %}" alt="">
+								</div>
+							</div>
+						</div>
+						<!-- single-slide -->
+						<div class="row single-slide">
+							<div class="col-lg-5">
+								<div class="banner-content">
+									<h1>Castrol - <br>самое то!</h1>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+									<div class="add-bag d-flex align-items-center">
+										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
+										<span class="add-text text-uppercase">Add to Bag</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="banner-img">
+									<img class="img-fluid" src="{% static 'img/banner/banner-img-1.png' %}" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
 
-                </div>
-                <br>
-                <div class="row">
+	<!-- start features Area -->
+	<section class="features-area section_gap">
+		<div class="container">
+			<div class="row features-inner">
+				<!-- single features -->
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="{% static 'img/features/f-icon1.png' %}" alt="">
+						</div>
+						<h6>Бесплатная доставка*</h6>
+						<p>* - для заказов от 16 л</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="{% static 'img/features/f-icon2.png' %}" alt="">
+						</div>
+						<h6>Политика возврата</h6>
+						<p>Вы можете вернуть товар в течении 14 дней</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="single-features" id="last-single-features">
+						<div class="f-icon">
+							<img src="{% static 'img/features/f-icon3.png' %}" alt="">
+						</div>
+						<h6>Поддержка 24/7</h6>
+						<p>Вы можете обращаться в удобное для вас время</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end features Area -->
+
+	<!-- Start category Area -->
+	<section class="category-area">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 col-md-12">
+					<div class="row">
+                        {% for cat in categories %}
+                            {% if cat.slug == 'motornye-masla' %}
+                            <div class="col-lg-8 col-md-8">
+                                <a href="{{ cat.get_absolute_url }}">
+                                    <div class="single-deal">
+                                        <div class="overlay"></div>
+                                        <img class="img-fluid w-100" src="{% static 'img/category/c1.jpg' %}" alt="">
+                                        <div class="deal-details">
+                                            <h6 class="deal-title">Моторные масла</h6>
+                                        </div>
+                                        </a>
+                                    </div>
+                                </a>
+                            </div>
+                            {% elif cat.slug == 'promyvka-maslyanoj-sistemy' %}
+                            <div class="col-lg-4 col-md-4">
+                                <a href="{{ cat.get_absolute_url }}">
+                                    <div class="single-deal">
+                                        <div class="overlay"></div>
+                                        <img class="img-fluid w-100" src="{% static 'img/category/c2.jpg' %}" alt="" >
+                                        <div class="deal-details">
+                                            <h6 class="deal-title">Промывочные масла</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% elif cat.slug == 'prisadki-k-motornym-maslam' %}
+                            <div class="col-lg-4 col-md-4">
+                                <a href="{{ cat.get_absolute_url }}">
+                                    <div class="single-deal">
+                                        <div class="overlay"></div>
+                                        <img class="img-fluid w-100" src="{% static 'img/category/c3.jpg' %}" alt="">
+                                        <div class="deal-details">
+                                            <h6 class="deal-title">Присадка к маслам</h6>
+                                        </div>
+                                        </a>
+                                    </div>
+                                </a>
+                            </div>
+                            {% else %}
+                            <div class="col-lg-8 col-md-8">
+                                <a href="{{ cat.get_absolute_url }}">
+                                    <div class="single-deal">
+                                        <div class="overlay"></div>
+                                        <img class="img-fluid w-100" src="{% static 'img/category/c4.jpg' %}">
+                                        <div class="deal-details">
+                                            <h6 class="deal-title">Трансмиссонные масла</h6>
+                                        </div>
+                                        </a>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End category Area -->
+
+	<!-- start product Area -->
+	<section class="owl-carousel active-product-area section_gap">
+		<!--  products slide -->
+		{% for cat in categories %}
+        <div class="single-product-slider">
+			<div class="container">
+                <div class="row justify-content-center">
+					<div class="col-lg-6 text-center">
+						<div class="section-title">
+							<h1>{{ cat.name }}</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore
+								magna aliqua.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!-- single product -->
                     {% for prod in products %}
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="{{ prod.image.url }}" alt="" style="width: 320px; height: 250px">
-                            <div class="caption">
-                                <h4 class="text-center"><a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: black">{{ prod.title }}</a></h4>
-                                <h3 class="text-center" style="color: black">Цена: {{ prod.price }} грн.</h3>
-                                {% if request.user.is_authenticated %}
-                                    <form action="{% url "cart:CartAdd" prod.id %}" method="post">
+                     {% if prod.category == cat %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="single-product">
+                                <a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">
+                                    <img class="img-fluid" src="{{ prod.image.url }}" alt="" style="width: 320px; height: 250px">
+                                </a>
+                                <div class="product-details">
+                                    <div style="height: 57px;">
+                                        <h6><a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">{{ prod.title }}</a></h6>
+                                    </div>
+                                    <div class="price text-center s_product_text" style="margin-top: 0px;">
+                                        <h2>{{ prod.price }} грн.</h2>
+                                    </div>
+                                    <form action="{% url 'cart:CartAdd' prod.id %}" method="post">
                                         {% csrf_token %}
-                                        <div class="text-center">
-                                            <label class="text-left">Кол-во: {{ cart_product_form.quantity }}</label>
-                                            <button class="btn btn-warning">Добавить в корзину</button>
+                                        <label class="text-center" style="display: none;">Кол-во: {{ cart_product_form.quantity }}</label>
+                                        <div class="prd-bottom text-center">
+                                            <button class="btn primary-btn" style="border: none"><i class="fas fa-cart-arrow-down" style="padding-right: 10px"></i> В корзину</button>
                                         </div>
                                     </form>
-                                {% endif %}
+                                </div>
                             </div>
                         </div>
-                    </div>
+                     {% endif %}
                     {% endfor %}
-                </div>
+				</div>
+			</div>
+		</div>
+        {% endfor %}
+	</section>
 
-            </div>
+	<!-- end product Area -->
 
-        </div>
-        {% endblock content %}
-    </div>
-    <!-- /.container -->
+	<!-- End related-product Area -->
+{% endblock content %}
+	<!-- start footer Area -->
+	<footer class="footer-area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>Доставка</h6>
+						<p>
+							Бесплатная доставка для заказов от 16 л.
+                            Доставка осуществляется курьером по городу Херсон.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>Контакты</h6>
 
-    <div class="container">
-        <hr>
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-        </footer>
+						<div class="footer-social d-flex align-items-center">
+							<a href="#" style="text-decoration: none; color: white"><i class="fas fa-mobile"></i> +38-099-473-16-78</a>
+							<a href="mailto:fastsales@gmail.com" style="text-decoration: none; color: white"><i class="fas fa-envelope"></i> fastsales@gmail.com</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+				<p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fas fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+			</div>
+		</div>
+	</footer>
+    {% block extrahead %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
-    </div>
-    <script src="{% static 'js/jquery.js' %}"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<!-- End footer Area -->
+	<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	 crossorigin="anonymous"></script>
+	<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'js/jquery.sticky.js' %}"></script>
+	<script src="{% static 'js/nouislider.min.js' %}"></script>
+	<script src="{% static 'js/countdown.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="{% static 'js/gmaps.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
 
+
+    <script>
+        /*=================================
+        Javascript for banner area carousel
+         ==================================*/
+        $(".active-banner-slider").owlCarousel({
+            items:1,
+            autoplay:false,
+            autoplayTimeout: 5000,
+            loop:true,
+            nav:true,
+            navText:["<img src='{% static "img/product/prev.png" %}'>", "<img src='{% static "img/product/next.png" %} '>"],
+            dots:false
+        });
+        /*=================================
+        Javascript for product area carousel
+        ==================================*/
+        $(".active-product-area").owlCarousel({
+            items:1,
+            autoplay:false,
+            autoplayTimeout: 5000,
+            loop:true,
+            nav:true,
+            navText:["<img src='{% static "img/product/prev.png" %}'>","<img src='{%  static "img/product/next.png" %}'>"],
+            dots:false
+        });
+        /*=================================
+        Javascript for exclusive area carousel
+        ==================================*/
+        $(".active-exclusive-product-slider").owlCarousel({
+            items:1,
+            autoplay:false,
+            autoplayTimeout: 5000,
+            loop:true,
+            nav:true,
+            navText:["<img src='{% static "img/product/prev.png" %}'>","<img src='{% static "img/product/next.png" %}'>"],
+            dots:false
+        });
+
+
+
+    </script>
+{% endblock extrahead %}
 </body>
 
 </html>
-

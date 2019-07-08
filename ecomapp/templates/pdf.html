@@ -19,10 +19,6 @@
             <td>{{ order.first_name }}</td>
         </tr>
         <tr>
-            <td>Фамилия:</td>
-            <td>{{ order.last_name }}</td>
-        </tr>
-        <tr>
             <td>Телефон:</td>
             <td>{{ order.phone }}</td>
         </tr>
@@ -30,10 +26,10 @@
             <td>Электронная почта:</td>
             <td>{{ order.email }}</td>
         </tr>
-        <tr>
-            <td>Адрес доставки:</td>
-            <td>{{ order.address }}</td>
-        </tr>
+{#        <tr>#}
+{#            <td>Адрес доставки:</td>#}
+{#            <td>{{ order.address }}</td>#}
+{#        </tr>#}
         {% if order.comments != 'no comments' %}
         <tr>
             <td>Комментарии к заказу:</td>

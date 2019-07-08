@@ -1,29 +1,336 @@
 {% extends  'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 
 {% block content %}
-<div class="col-sm-12">
-    <h2>{{ category.name }}</h2>
-    <hr>
-    {% for product in products %}
-    <div class="col-sm-4">
-        <a href="{{ product.get_absolute_url }}" style="text-decoration: none; color: black">
-            <img src="{{ product.image.url }}" style="width: 100%; height: 350px">
-            <h4 class="text-center">{{ product.title }}</h4>
-            <p class="text-center" style="font-size: 25px">Цена: <strong>{{ product.price }} грн.</strong></p>
-        </a>
-        {% if request.user.is_authenticated %}
-            <form action="{% url "cart:CartAdd" product.id %}" method="post">
-                {% csrf_token %}
-                <div class="text-center">
-                    <label class="text-left">Кол-во: {{ cart_product_form.quantity }}</label>
-                    <button class="btn btn-warning">Добавить в корзину</button>
+
+<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+                    <nav class="d-flex align-items-center">
+                        <h1 id="category_name" data-category="{{ category.slug }}">{{ category.name }}</h1>
+                    </nav>
+					<nav class="d-flex align-items-center">
+						<a href="/">Главная<span class="lnr lnr-arrow-right"></span></a>
+						<a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+    <!-- Start product -->
+    <div class="text_test"></div>
+    <div class="container here">
+		<div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-5">
+                <div class="sidebar-categories">
+					<div class="head">Производитель</div>
+					<ul class="main-categories">
+						<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								 class="lnr lnr-arrow-right"></span>{{ category.name }}<span class="number"></span></a>
+							{% for product in products %}
+                                <ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+                                    <li class="main-nav-list child"><a href="#">{{ product.brand }}<span class="number">(13)</span></a></li>
+                                </ul>
+                            {% endfor %}
+						</li>
+                    </ul>
                 </div>
-            </form>
-        {% else %}
-        <p class="text-center">Заказывать товар могут только авторизированные пользователи. Пожалуйста <a href="#">войдите</a> в свой аккаунт или <a href="#">зарегистрируйтесь</a>.</p>
-        {% endif %}
+                <div class="sidebar-filter mt-50">
+                    <form method="get">
+{#                        <div class="top-filter-head">Сортировать </div>#}
+{#                        <div class="common-filter" style="padding-bottom: 50px">#}
+{#                            {{ filter_form.ordering|as_crispy_field }}#}
+{#                        </div>#}
+                        <div class="top-filter-head">Цена: </div>
+                        <div class="common-filter">
+                            <label> {{ filter_form.min_price|as_crispy_field }} </label>
+                            <label> {{ filter_form.max_price|as_crispy_field }} </label>
+                        </div>
+                        <div class="top-filter-head">Сортировать по литражу</div>
+                        <div class="common-filter">
+                            {% for field in filter_form.the_choices %}
+                                <ul class="check-volume">
+                                    <li class="filter-list">{{ field }} <label> л </label></li>
+                                </ul>
+                            {% endfor %}
+                        </div>
+                        <div class="top-filter-head">Производитель</div>
+                        <div class="common-filter">
+                            {% for field in filter_form.the_brand %}
+                                <ul class="check-volume">
+                                    <li class="filter-list">{{ field }}</li>
+                                </ul>
+                            {% endfor %}
+                        </div>
+                        <div class="common-filter">
+                            <input class="btn primary-btn" type="submit" value="Поиск">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <div class="filter-bar d-flex flex-wrap justify-content-end">
+                    <div class="sorting ">
+                        <form method="get">
+                            <div id="myOptions">
+                                {{ sort_form.ordering }}
+                            </div>
+                            <input id="sub" class="btn primary-btn" type="submit" style="display: none">
+                        </form>
+{#                        <select id="myOptions">#}
+{#                            <option value='option3' data-sort='title' id="sort-desc">По алфавиту</option>#}
+{#                            <option value='option1' data-sort='price' id="sort-asc">Сначала дешевые</option>#}
+{#                            <option value='option2' data-sort='-price' id="sort-desc">Сначала дорогие</option>#}
+{#                        </select>#}
+                    </div>
+				</div>
+                <section class="lattest-product-area pb-40 category-list">
+                    <div class="row goods-wrap">
+                        {% for prod in products %}
+                            <div class="col-lg-4 col-md-6" data-price="{{ prod.price }}" data-title="{{ prod.title }}" data-volume="{{ prod.volume }}">
+                                <div class="single-product" data-price="{{ prod.price }}" data-title="{{ prod.title }}" data-volume="{{ prod.volume }}">
+                                    <a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">
+                                        <img class="img-fluid" src="{{ prod.image.url }}" alt="" style="width: 320px; height: 250px">
+                                    </a>
+                                    <div class="product-details">
+                                        <div class="text-center" style="height: 57px;">
+                                            <h6><a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">{{ prod.title }}</a></h6>
+                                        </div>
+                                        <div class="price text-center s_product_text" style="margin-top: 0px;">
+                                            <h2 class="item">{{ prod.price }} грн.</h2>
+                                        </div>
+                                        <form action="{% url 'cart:CartAdd' prod.id %}" method="post">
+                                            {% csrf_token %}
+                                            <label class="text-center" style="display: none;">Кол-во: {{ cart_product_form.quantity }}</label>
+                                            <div class="prd-bottom text-center">
+                                                <button class="btn primary-btn" style="border: none"><i class="fas fa-cart-arrow-down" style="padding-right: 10px"></i> В корзину</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+{#                <div class="pagination">#}
+{##}
+{#                    {% if products.has_previous %}#}
+{#                        <a href="?page={{ products.previous_page_number }}">←</a>#}
+{#                    {% endif %}#}
+{##}
+{#                    {% for num in products.paginator.page_range %}#}
+{#                        {% if num == products.number %}#}
+{#                            <span class="current"><b>{{ num }}</b></span>#}
+{#                        {% else %}#}
+{#                            <a href="?page={{ num }}"> {{ num }}</a>#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{##}
+{#                    {% if products_list.has_next %}#}
+{#                        <a href="?page={{ products_list.next_page_number }}">→</a>#}
+{#                    {% endif %}#}
+{##}
+{#                </div>#}
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-3 large-offset-5 columns">
+                <ul class="pagination">
+                    {% if products.has_previous %}
+                        <li class="arrow"><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+                    {% endif %}
+                    {% for num in products.paginator.page_range %}
+                        {% if num == products.number %}
+                            <li class="current"><b>{{ num }}</b></li>
+                        {% else %}
+                            <li><a href="?page={{ num }}"> {{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if products_list.has_next %}
+                        <li class="arrow"><a href="?page={{ products_list.next_page_number }}">&raquo;</a>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
     </div>
-    {% endfor %}
-</div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+{#    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>#}
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('#myOptions').change(function () {
+                document.getElementById("sub").click();
+                {#document.getElementById("myOptions").style.visibility = "hidden";#}
+            });
+        });
+{#{% block javascript %}#}
+{##}
+{#        $(document).ready(function() {#}
+{#            $('#myOptions').change(function () {#}
+{#                var val = $("#myOptions option:selected");#}
+{#                var sort_type = $(val).attr('data-sort');#}
+{#                var categ = document.getElementById("category_name");#}
+{#                var category = $(categ).attr('data-category');#}
+{#                console.log(sort_type);#}
+{#                console.log(category);#}
+                {#$.post('/ajx/mypostview', {'mydata': 'xyz', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, function(data) {#}
+                {#$('#output').html(data);#}
+{##}
+{#                $.ajax({#}
+{#                    type:"POST",#}
+{#                    url: '{{ category.get_absolute_url }}',#}
+{#                    data: {#}
+{#                        'csrfmiddlewaretoken' : '{{ csrf_token }}',#}
+{#                        'sort_type': sort_type,#}
+                        {#'category_slug': category_slug,#}
+{#                    },#}
+{#                    dataType: 'json',#}
+{#                    success: function () {#}
+{#                        console.log('ok');#}
+{##}
+                        {#$('.here').innerHTML = data;#}
+                        {#$('.here').load(data);#}
+                        {#if (data.text) {#}
+                        {#    console.log(data.text);#}
+                        {#    document.querySelector(".text_test").innerHTML = data.text;#}
+                        {##}
+                        {#    }#}
+{#                    }#}
+{#                });#}
+{##}
+{#            });#}
+{#        });#}
+{#    {% endblock %}#}
+
+
+
+
+                {#$.ajax({#}
+                {#    type:"POST",#}
+                {#    url: '{% url "sorting_products" %}',#}
+                {#    data: {#}
+                {#        'csrfmiddlewaretoken' : '{{ csrf_token }}',#}
+                {#        'sort_type': sort_type,#}
+                {#        'category_type': category_slug,#}
+                {#    },#}
+                {#    dataType: 'json',#}
+                {#    success: function (data) {#}
+                {#        if (data.products) {#}
+                {#            console.log(data.products);#}
+                {#            document.querySelector(".goods-wrap").innerHTML = data.products;#}
+                {#        }#}
+                        {#if (data.text) {#}
+                        {#    console.log(data.text);#}
+                        {#    document.querySelector(".text_test").innerHTML = data.text;#}
+                        {##}
+                {#    }#}
+
+        {#$(document).ready(function() {#}
+        {#$('#myOptions').change(function () {#}
+        {#    var val = $("#myOptions option:selected").text();#}
+        {##}
+        {#    if (val == "Сначала дорогие") {#}
+        {#        sortListDesc('data-price');#}
+        {#    }#}
+        {#    if (val == "Сначала дешевые") {#}
+        {#        sortList('data-price');#}
+        {#    }#}
+        {#    if (val == "По алфавиту") {#}
+        {#        sortAlpabet('data-title');#}
+        {#    }#}
+        {##}
+
+
+
+        {#function sortList(sortType) {#}
+        {#    let items = document.querySelector('.goods-wrap');#}
+        {#    for (let i = 0; i < items.children.length - 1; i++) {#}
+        {#        for (let j = i; j < items.children.length; j++) {#}
+        {#            console.log(items.children[i].getAttribute(sortType));#}
+        {#            if (items.children[i].getAttribute(sortType) > items.children[j].getAttribute(sortType)) {#}
+        {#                let replacedNode = items.replaceChild(items.children[j], items.children[i]);#}
+        {#                insertAfter(replacedNode, items.children[i]);#}
+        {#            }#}
+        {#        }#}
+        {#    }#}
+
+        {##}
+        {#function sortListDesc(sortType) {#}
+        {#    let items = document.querySelector('.goods-wrap');#}
+        {#    for (let i = 0; i < items.children.length - 1; i++) {#}
+        {#        for (let j = i; j < items.children.length; j++) {#}
+        {#            if (items.children[i].getAttribute(sortType) < items.children[j].getAttribute(sortType)) {#}
+        {#                console.log(1);#}
+        {#                let replacedNode = items.replaceChild(items.children[j], items.children[i]);#}
+        {#                console.log(replacedNode);#}
+        {#                insertAfter(replacedNode, items.children[i]);#}
+        {#            }#}
+        {#        }#}
+        {#    }#}
+
+        {##}
+        {#function insertAfter(elem, refElem) {#}
+        {#    return refElem.parentNode.insertBefore(elem, refElem.nextSibling);#}
+
+        {##}
+        {#function sortAlpabet(sortType) {#}
+        {#    let items = document.querySelector('.goods-wrap');#}
+        {#    $(items).children().detach().sort(function (a, b) {#}
+        {#        return a.getAttribute(sortType).localeCompare(b.getAttribute(sortType));#}
+        {#    }).appendTo(items);#}
+
+
+        {#var gr = document.getElementsByName('checkbox');#}
+        {#window.onclick = function() {#}
+        {##}
+        {#    var checked_list = [];#}
+        {#    listreturn();#}
+        {#    for(var i=0; i<gr.length; i++){#}
+        {#        if (gr[i].checked) {#}
+        {#            checked_list.push(gr[i].value);#}
+        {#        }#}
+        {#    }#}
+        {#    console.log(checked_list);#}
+        {#    checkList(checked_list, 'data-volume');#}
+
+        {##}
+        {#function listreturn() {#}
+        {#    let items = document.querySelector('.goods-wrap');#}
+        {#    for (let i = 0; i < items.children.length; i++) {#}
+        {#        items.children[i].style.display = "block";#}
+        {#    }#}
+
+        {##}
+        {#function checkList(volume, sortType) {#}
+        {#    let items = document.querySelector('.goods-wrap');#}
+        {##}
+        {#    var top = [];#}
+        {#    if (volume.length > 0) {#}
+        {#        for (let j = 0; j < volume.length; j++) {#}
+        {#            for (let i = 0; i < items.children.length; i++) {#}
+        {##}
+        {#                if (items.children[i].getAttribute(sortType) == volume[j]) {#}
+        {#                    top[top.length] = items.children[i];#}
+        {##}
+        {#                } else {#}
+        {#                    items.children[i].style.display = "none";#}
+        {#                }#}
+        {#            }#}
+        {#        }#}
+        {#        console.log(top);#}
+        {#        for (let i = 0; i < top.length; i++){#}
+        {#            top[i].style.display = "block";#}
+        {#        }#}
+        {#    }#}
+
+    </script>
 {% endblock content %}

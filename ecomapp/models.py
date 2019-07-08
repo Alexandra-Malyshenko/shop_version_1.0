@@ -8,7 +8,14 @@ from django.utils.text import slugify
 from django.utils import timezone
 from django.urls import reverse
 from transliterate import translit
+# from django.contib.postgres.indexes import GinIndex
 from decimal import Decimal
+
+
+class CategoryManager(models.Manager):
+
+    def all(self, *args, **kwargs):
+        return super(CategoryManager, self).get_queryset().all()
 
 
 class Category(models.Model):
@@ -16,13 +23,14 @@ class Category(models.Model):
     objects = None
     name = models.CharField(max_length=100, verbose_name='Название')
     slug = models.SlugField(blank=True, unique=True)
+    objects = CategoryManager()
 
     class Meta:
         ordering = ['name']
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def get_absolute_url(self):
@@ -31,7 +39,7 @@ class Category(models.Model):
 
 def pre_save_category_slug(sender, instance, *args, **kwargs):
     if not instance.slug:
-        slug = slugify(translit(unicode(instance.name), reversed=True))
+        slug = slugify(translit(str(instance.name), reversed=True))
         instance.slug = slug
 
 
@@ -47,19 +55,20 @@ class Brand(models.Model):
         verbose_name = 'Бренд'
         verbose_name_plural = 'Бренды'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
 def image_folder(instance, filename):
        filename = instance.slug + '.' + filename.split('.')[1]
-       return "{0}/{1}".format(instance.slug, filename)
+       return "{0}/{1}".format(str(instance.slug), filename)
 
 
 class ProductManager(models.Manager):
 
     def all(self, *args, **kwargs):
         return super(ProductManager, self).get_queryset().filter(available=True)
+
 
 
 class Product(models.Model):
@@ -72,7 +81,10 @@ class Product(models.Model):
     description = models.TextField(blank=True, verbose_name="Описание")
     image = models.ImageField(upload_to=image_folder, verbose_name="Изображение товара")
     price = models.DecimalField(verbose_name="Цена", max_digits=9, decimal_places=2)
+    volume = models.DecimalField(default=True, verbose_name="Объем", max_digits=4, decimal_places=1)
+    sae = models.CharField(default=True, max_length=20, verbose_name="SAE")
     available = models.BooleanField(verbose_name="Доступен", default=True)
+    in_order = models.BooleanField(verbose_name="Под заказ", default=True)
     objects = ProductManager()
 
     class Meta:
@@ -82,8 +94,9 @@ class Product(models.Model):
         index_together = [
             ['id', 'slug']
         ]
+        # index = [GinIndex(fields=['title'])]
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_absolute_url(self):
@@ -92,11 +105,13 @@ class Product(models.Model):
 
 def pre_save_product_slug(sender, instance, *args, **kwargs):
     if not instance.slug:
-        slug = slugify(translit(unicode(instance.title), reversed=True))
+        slug = slugify(translit(str(instance.title), 'ru', reversed=True))
         instance.slug = slug
 
 
 pre_save.connect(pre_save_product_slug, sender=Product)
+
+
 
 
 # class CartItem(models.Model):

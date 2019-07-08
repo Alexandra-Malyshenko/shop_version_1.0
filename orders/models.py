@@ -16,14 +16,15 @@ class Order(models.Model):
 
     # user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь')
     first_name = models.CharField(verbose_name='Имя', max_length=200)
-    last_name = models.CharField(verbose_name='Фамилия', max_length=200)
-    email = models.EmailField(verbose_name='Email')
+    last_name = models.CharField(verbose_name='Фамилия', max_length=200, null=True, blank=True)
+    email = models.EmailField(verbose_name='Email', blank=True, null=True)
+
     phone = models.CharField(verbose_name='Телефон', max_length=20)
-    address = models.CharField(verbose_name='Адрес доставки', max_length=255)
+    address = models.CharField(verbose_name='Адрес', max_length=200, null=True, blank=True)
     date_of_delivery = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(verbose_name='Создан', auto_now_add=True)
     updated = models.DateTimeField(verbose_name='Обновлен', auto_now=True)
-    comments = models.TextField(verbose_name='Комментарии', default='no comments')
+    comments = models.TextField(verbose_name='Комментарии', blank=True, default='no comments')
     status = models.CharField(verbose_name='Статус заказа', max_length=100, choices=ORDER_STATUS_CHOICES, default=ORDER_STATUS_CHOICES[0][0])
 
     class Meta:

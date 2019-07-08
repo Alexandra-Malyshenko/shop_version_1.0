@@ -7,7 +7,6 @@ from ecomapp.models import Product, Category
 from .cart import Cart
 from .forms import CartAddProductForm
 
-
 @require_POST
 def CartAdd(request, product_id):
     cart = Cart(request)
@@ -20,11 +19,13 @@ def CartAdd(request, product_id):
     return redirect(reverse('cart:CartDetail'))
 
 
+
 def CartRemove(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
     return redirect(reverse('cart:CartDetail'))
+
 
 
 def CartDetail(request):

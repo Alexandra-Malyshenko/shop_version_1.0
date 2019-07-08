@@ -6,7 +6,7 @@ from .models import Category, Brand, Product
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
-    # prepopulated_fields = {'slug': ('name', )}
+
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -14,11 +14,12 @@ class ProductAdmin(admin.ModelAdmin):
                     'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
-    # prepopulated_fields = {'slug': ('name', )}
+
 
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Brand)
 admin.site.register(Product, ProductAdmin)
+
 
 

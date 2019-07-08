@@ -1,25 +1,70 @@
 {% extends  'base.html' %}
 {% load static %}
 
-{% block content %}
-<div class="col-sm-4">
-    <img src="{{ product.image.url }}" style="width:80%; height: 300px ">
-</div>
-<div class="col-sm-8">
-    <h3 class="text-center">{{ product.title }}</h3>
-    <p>{% lorem %}</p>
-    <p>{% lorem %}</p>
-    <hr>
-    <p style="font-size: 25px">Цена: <strong>{{ product.price }} грн.</strong></p>
-    {% if request.user.is_authenticated %}
-    <form action="{% url "cart:CartAdd" product.id %}" method="post">
-        {{ cart_product_form }}
-        {% csrf_token %}
-        <button class="btn btn-danger">Добавить в корзину</button>
-    </form>
-    {% else %}
-    <p class="text-center">Заказывать товар могут только авторизированные пользователи. Пожалуйста <a href="{% url 'login' %}">войдите</a> в свой аккаунт или <a href="{% url 'registration' %}">зарегистрируйтесь</a>.</p>
-    {% endif %}
 
-</div>
+{% block content %}
+<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<nav class="d-flex align-items-center justify-content-end">
+                        <h1>Описание продукта</h1>
+                    </nav>
+					<nav class="d-flex align-items-center justify-content-end">
+						<a href="/">Главная<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{{ product.category.get_absolute_url }}">{{ product.category.name }}<span class="lnr lnr-arrow-right"></span></a>
+					</nav>
+                    <nav class="d-flex align-items-center justify-content-end">
+                        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                    </nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+    <!-- Single product area -->
+    <div class="product_image_area">
+		<div class="container">
+			<div class="row s_product_inner">
+				<div class="col-lg-6">
+					<div class="s_Product_carousel">
+						<div class="single-prd-item">
+							<img class="img-fluid" src="{{ product.image.url }}" alt="">
+						</div>
+						<div class="single-prd-item">
+							<img class="img-fluid" src="{{ product.image.url }}" alt="">
+						</div>
+						<div class="single-prd-item">
+							<img class="img-fluid" src="{{ product.image.url }}" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5 offset-lg-1">
+					<div class="s_product_text">
+						<h3 id="title" data-title="{{ product.title }}">{{ product.title }}</h3>
+						<h2>{{ product.price }} грн.</h2>
+						<ul class="list">
+							<li><a class="active" href="{{ product.category.get_absolute_url }}"><span>Категория</span> : {{ product.category }}</a></li>
+                            <li><a href="#"><span>Статус</span>{% if product.available is True %} : В наличии {% else %} : Нет в наличии {% endif %}</a></li>
+						</ul>
+
+						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
+							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
+							during the winter.</p>
+						<div class="d-flex align-items-center">
+							<form action="{% url 'cart:CartAdd' product.id %}" method="post">
+                                {{ cart_product_form.as_p }}
+                                {% csrf_token %}
+                                <button class="btn primary-btn" style="border: none"><i class="fas fa-cart-arrow-down" style="padding-right: 10px"></i> В корзину</button>
+                            </form>
+						</div>
+                        <br>
+                        <br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--================End Single Product Area =================-->
 {% endblock content %}

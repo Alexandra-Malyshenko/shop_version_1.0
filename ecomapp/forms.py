@@ -2,6 +2,7 @@
 from django import forms
 from django.utils import timezone
 from django.contrib.auth.models import User
+from .models import Product
 
 
 class LoginForm(forms.Form):
@@ -63,5 +64,55 @@ class RegistrationForm(forms.ModelForm):
 
 
 
+CHOICES_OF_BRAND = [
+    ('1','1'),
+    ('2','2'),
+    ('3','3'),
+    ('4','4'),
+    ('5','5'),
+]
 
 
+def choices_of_volume():
+    list_volume = []
+    for product in Product.objects.all():
+        if product.volume not in list_volume:
+            list_volume.append(int(product.volume))
+    list_volume.sort()
+    return list_volume
+
+
+def choices_of_brand():
+    list_brand = []
+    for product in Product.objects.all():
+        if product.brand not in list_brand:
+            list_brand.append(product.brand)
+    list_brand.sort()
+    return list_brand
+
+
+PRODUCT_VOLUME_CHOICES = [(i, str(i)) for i in choices_of_volume()]
+PRODUCT_BRAND_CHOICES = [(i, i) for i in choices_of_brand()]
+
+
+
+class ProductFilterForm(forms.Form):
+    min_price = forms.IntegerField(label="от", required=False)
+    max_price = forms.IntegerField(label="до", required=False)
+    the_choices = forms.MultipleChoiceField(choices=PRODUCT_VOLUME_CHOICES, required=False,
+                                                 widget=forms.CheckboxSelectMultiple)
+    the_brand = forms.MultipleChoiceField(choices=PRODUCT_BRAND_CHOICES, required=False,
+                                            widget=forms.CheckboxSelectMultiple)
+    ordering = forms.ChoiceField(label=None, required=False, choices=[
+        ('title', 'по алфавиту'),
+        ('price', 'цена по возрастанию'),
+        ('-price', 'цена по убыванию'),
+    ])
+
+
+class SortFilterForm(forms.Form):
+    ordering = forms.ChoiceField(label=None, required=False, choices=[
+        ('title', 'по алфавиту'),
+        ('price', 'цена по возрастанию'),
+        ('-price', 'цена по убыванию'),
+    ])

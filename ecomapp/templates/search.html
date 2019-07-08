@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+                    <nav class="d-flex align-items-center">
+                        <h1>{{ category.name }}</h1>
+                    </nav>
+					<nav class="d-flex align-items-center">
+						<a href="/">Главная<span class="lnr lnr-arrow-right"></span></a>
+						<a href="">Поиск</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+    <!-- Start product -->
+    <div class="container">
+		<div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-5">
+                <div class="sidebar-categories">
+					<div class="head">Категории</div>
+					<ul class="main-categories">
+						<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								 class="lnr lnr-arrow-right"></span>{{ category.name }}<span class="number"></span></a>
+							{% for prod in products %}
+                                <ul class="collapse brands" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+                                    <li class="main-nav-list child сheck-brand" value="{{ prod.brand }}" ><a href="#">{{ prod.brand }}</a></li>
+                                </ul>
+                            {% endfor %}
+						</li>
+                    </ul>
+                </div>
+                <div class="sidebar-filter mt-50">
+					<div class="top-filter-head">Сортировать по объему</div>
+					<div class="common-filter">
+                        <div class="head">Объем</div>
+						<ul class="check-volume">
+                            <li class="filter-list"><input class="pixel-radio" type="checkbox" value="1,00" name="checkbox"><label> 1 л <span></span></label></li>
+                            <li class="filter-list"><input class="pixel-radio" type="checkbox" value="2,00" name="checkbox"><label> 2 л <span></span></label></li>
+                            <li class="filter-list"><input class="pixel-radio" type="checkbox" value="3,00" name="checkbox"><label> 3 л <span></span></label></li>
+                            <li class="filter-list"><input class="pixel-radio" type="checkbox" value="4,00" name="checkbox"><label> 4 л <span></span></label></li>
+                            <li class="filter-list"><input class="pixel-radio" type="checkbox" value="5,00" name="checkbox"><label> 5 л <span></span></label></li>
+                        </ul>
+					</div>
+                    <div class="top-filter-head">Сортировать по цене</div>
+                    <div class="common-filter">
+                        <form method="GET">
+                            <label> {{ filter_form.min_price|as_crispy_field }} </label>
+                            <label> {{ filter_form.max_price|as_crispy_field }} </label>
+                            <input class="btn primary-btn" type="submit" value="Поиск">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <div class="filter-bar d-flex flex-wrap justify-content-end">
+                    <div class="sorting text-right">
+                        <select id="myOptions">
+                            <option value='option3' id="sort-desc">По алфавиту</option>
+		                    <option value='option1' id="sort-asc">Сначала дешевые</option>
+		                    <option value='option2' id="sort-desc">Сначала дорогие</option>
+	                    </select>
+					</div>
+				</div>
+                <section class="lattest-product-area pb-40 category-list">
+                    <div class="row goods-wrap">
+                        {% for prod in found_search %}
+                            <div class="col-lg-4 col-md-6" data-price="{{ prod.price }}" data-title="{{ prod.title }}" data-volume="{{ prod.volume }}">
+                                <div class="single-product" data-price="{{ prod.price }}" data-title="{{ prod.title }}" data-volume="{{ prod.volume }}">
+                                    <a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">
+                                        <img class="img-fluid" src="{{ prod.image.url }}" alt="" style="width: 320px; height: 250px">
+                                    </a>
+                                    <div class="product-details">
+                                        <div class="text-center" style="height: 57px;">
+                                            <h6><a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">{{ prod.title }}</a></h6>
+                                        </div>
+                                        <div class="price text-center s_product_text" style="margin-top: 0px;">
+                                            <h2 class="item">{{ prod.price }} грн.</h2>
+                                        </div>
+                                        <form action="{% url 'cart:CartAdd' prod.id %}" method="post">
+                                            {% csrf_token %}
+                                            <label class="text-center" style="display: none;">Кол-во: {{ cart_product_form.quantity }}</label>
+                                            <div class="prd-bottom text-center">
+                                                <button class="btn primary-btn" style="border: none"><i class="fas fa-cart-arrow-down" style="padding-right: 10px"></i> В корзину</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+        $('#myOptions').change(function () {
+            var val = $("#myOptions option:selected").text();
+
+            if (val == "Сначала дорогие") {
+                sortListDesc('data-price');
+            }
+            if (val == "Сначала дешевые") {
+                sortList('data-price');
+            }
+            if (val == "По алфавиту") {
+                sortAlpabet('data-title');
+            }
+
+        });
+
+        function sortList(sortType) {
+            let items = document.querySelector('.goods-wrap');
+            for (let i = 0; i < items.children.length - 1; i++) {
+                for (let j = i; j < items.children.length; j++) {
+                    console.log(items.children[i].getAttribute(sortType));
+                    if (items.children[i].getAttribute(sortType) > items.children[j].getAttribute(sortType)) {
+                        let replacedNode = items.replaceChild(items.children[j], items.children[i]);
+                        insertAfter(replacedNode, items.children[i]);
+                    }
+                }
+            }
+        }
+
+        function sortListDesc(sortType) {
+            let items = document.querySelector('.goods-wrap');
+            for (let i = 0; i < items.children.length - 1; i++) {
+                for (let j = i; j < items.children.length; j++) {
+                    if (items.children[i].getAttribute(sortType) < items.children[j].getAttribute(sortType)) {
+                        console.log(1);
+                        let replacedNode = items.replaceChild(items.children[j], items.children[i]);
+                        console.log(replacedNode);
+                        insertAfter(replacedNode, items.children[i]);
+                    }
+                }
+            }
+        }
+
+        function insertAfter(elem, refElem) {
+            return refElem.parentNode.insertBefore(elem, refElem.nextSibling);
+        }
+
+        function sortAlpabet(sortType) {
+            let items = document.querySelector('.goods-wrap');
+            $(items).children().detach().sort(function (a, b) {
+                return a.getAttribute(sortType).localeCompare(b.getAttribute(sortType));
+            }).appendTo(items);
+        }
+
+        var gr = document.getElementsByName('checkbox');
+        window.onclick = function() {
+            let products = document.querySelector('.goods-wrap');
+            var checked_list = [];
+            listreturn(products);
+            for(var i=0; i<gr.length; i++){
+                if (gr[i].checked) {
+                    checked_list.push(gr[i].value);
+                }
+            }
+
+            checkList(checked_list, products, 'data-volume');
+        };
+
+        function listreturn(items) {
+            for (let i = 0; i < items.children.length; i++) {
+                items.children[i].style.display = "block";
+            }
+        }
+
+        function checkList(volume, items, sortType) {
+            var top = [];
+            if (volume.length > 0) {
+                for (let j = 0; j < volume.length; j++) {
+                    for (let i = 0; i < items.children.length; i++) {
+                        if (items.children[i].getAttribute(sortType) == volume[j]) {
+                            top.push(items.children[i]);
+                        } else {
+                            items.children[i].style.display = "none";
+                        }
+                    }
+                }
+                for (let i = 0; i < top.length; i++){
+                    top[i].style.display = "block";
+                }
+            }
+        }
+
+
+    });
+
+    </script>
+
+
+{% endblock %}

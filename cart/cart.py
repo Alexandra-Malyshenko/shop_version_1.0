@@ -1,3 +1,4 @@
+from builtins import object
 from decimal import Decimal
 from django.conf import settings
 from ecomapp.models import Product

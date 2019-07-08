@@ -5,18 +5,20 @@ from .views import (
     base_view,
     category_view,
     product_view,
-    # account_view,
-    registration_view,
-    login_view,
+    contact_view,
+    # product_list_view,
+    product_search_view,
+    # sorting_products_view,
     )
 
 
 urlpatterns = [
     url(r'^category/(?P<category_slug>[-\w]+)/$', category_view, name='category_detail'),
+    url(r'^product_search/$', product_search_view , name='product_search'),
     url(r'^product/(?P<product_slug>[-\w]+)/$', product_view, name='product_detail'),
-    # url(r'^account/$', account_view, name='account'),
-    url(r'^registration/$', registration_view, name='registration'),
-    url(r'^login/$', login_view, name='login'),
+    url(r'^contact/$', contact_view, name='contact'),
+    # url(r'^search$', product_list_view, name='search'),
+    # url(r'^sort_by/$', sorting_products_view , name='sorting_products'),
     url(r'^logout/$', LogoutView.as_view(next_page=reverse_lazy('base')), name='logout'),
-    url(r'^$', base_view, name='base'),
+    url(r'^$', base_view, name='base')
 ]

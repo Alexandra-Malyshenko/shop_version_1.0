@@ -2,13 +2,21 @@
 from django import forms
 from django.utils import timezone
 from .models import Order
+from django.forms import Textarea
 
 
 class OrderCreateForm(forms.ModelForm):
 
+    # def __init__(self, *args, **kwargs):
+    #     super(OrderCreateForm, self).__init__(*args, **kwargs)
+    #     self.fields['email'].requirement = False
+
     class Meta:
         model = Order
-        fields = ['first_name', 'last_name', 'email', 'phone', 'address', 'comments']
+        fields = ['first_name', 'email', 'phone', 'comments']
+        widgets = {
+            'comments': Textarea(attrs={'rows': 4, 'cols': 15}),
+        }
 
     # name = forms.CharField()
     # last_name = forms.CharField(required=False)

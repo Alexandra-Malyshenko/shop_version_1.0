@@ -15,7 +15,7 @@ from io import BytesIO
 from django.template.loader import get_template
 from django.template import Context
 import os
-#import pdfkit
+# import pdfkit
 import weasyprint
 
 
@@ -33,18 +33,18 @@ def OrderCreate(request):
                                          price=item['price'],
                                          quantity=item['quantity'])
             # Sending email when user click Send-button
-            subject = 'Масла для автолюбителя - заказ: {}'.format(order.id)
-            message = 'К email сообщению прикреплен PDF файл с информацией о вашем заказе.'
-            email = EmailMessage(subject, message, 'alexandra.samoilenko94@gmail.com', [order.email])
+            if order.email != "":
+                subject = 'Масла для автолюбителя - заказ: {}'.format(order.id)
+                message = 'К email сообщению прикреплен PDF файл с информацией о вашем заказе.'
+                email = EmailMessage(subject, message, 'alexandra.samoilenko94@gmail.com', [order.email])
 
-            html = render_to_string('pdf.html', {'order': order})
-            out = BytesIO()
-            weasyprint.HTML(string=html).write_pdf(out,
-                                                   stylesheets=[
-                                                       weasyprint.CSS(settings.STATIC_ROOT + 'css/bootstrap.min.css')])
-
-            email.attach('order_{}.pdf'.format(order.id), out.getvalue(), 'application/pdf')
-            email.send()
+                html = render_to_string('pdf.html', {'order': order})
+                out = BytesIO()
+                weasyprint.HTML(string=html).write_pdf(out,
+                                                        stylesheets=[
+                                                            weasyprint.CSS(settings.STATIC_ROOT + 'css/bootstrap.min.css')])
+                email.attach('order_{}.pdf'.format(order.id), out.getvalue(), 'application/pdf')
+                email.send()
 
             cart.clear()
 
