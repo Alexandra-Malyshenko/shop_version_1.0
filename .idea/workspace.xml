@@ -2,207 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e90a5afd-3869-4bd1-9546-8667cfa507fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/djangoshop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/djangoshop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/cart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/context_processors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangoshop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoshop/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djangoshop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoshop/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangoshop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoshop/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangoshop/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoshop/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0002_brand.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0002_brand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0003_auto_20190404_1153.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0003_auto_20190404_1153.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0004_auto_20190415_1152.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0004_auto_20190415_1152.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0005_auto_20190416_0913.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0005_auto_20190416_0913.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0006_auto_20190416_0953.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0006_auto_20190416_0953.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0007_auto_20190416_1411.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0007_auto_20190416_1411.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0008_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0008_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0009_auto_20190419_1526.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0009_auto_20190419_1526.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0010_auto_20190429_1249.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0010_auto_20190429_1249.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0011_auto_20190429_1803.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0011_auto_20190429_1803.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0012_auto_20190429_1822.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0012_auto_20190429_1822.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0013_auto_20190429_1827.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0013_auto_20190429_1827.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0014_auto_20190429_1836.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0014_auto_20190429_1836.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0015_auto_20190429_1911.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0015_auto_20190429_1911.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0016_auto_20190501_2251.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0016_auto_20190501_2251.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0017_auto_20190502_1203.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0017_auto_20190502_1203.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/0018_auto_20190507_1610.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/0018_auto_20190507_1610.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ecomapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/cart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ecomapp/templates/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/templates/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/templates/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/order_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/templates/pdf.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/pdf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/templates/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/templates/thank_you.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/thank_you.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecomapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecomapp/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/templates/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ecomapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecomapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get-pip.py" beforeDir="false" afterPath="$PROJECT_DIR$/get-pip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/kompleksnaja-prisadka-liqui-moly-molygen-motor-protect-9050-500ml/kompleksnaja-prisadka-_E9d4AhO.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/kompleksnaja-prisadka-liqui-moly-molygen-motor-protect-9050-500ml/kompleksnaja-prisadka-_E9d4AhO.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/kompleksnaja-prisadka-liqui-moly-oil-additiv-mos2-1998-300ml/kompleksnaja-prisadka-liqui_hKIhW1r.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/kompleksnaja-prisadka-liqui-moly-oil-additiv-mos2-1998-300ml/kompleksnaja-prisadka-liqui_hKIhW1r.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/motornoe-maslo-LIQUI-MOLY-Synthoil-Longtime-0W-30-/motornoe-maslo-LIQUI-MOLY-Synthoil-Lo_RbHFutI.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/motornoe-maslo-LIQUI-MOLY-Synthoil-Longtime-0W-30-/motornoe-maslo-LIQUI-MOLY-Synthoil-Lo_RbHFutI.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/motornoe-maslo-MOBIL-1-0W-20-4l/motornoe-maslo-MOBIL-1-0W-20-4l.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/motornoe-maslo-MOBIL-1-0W-20-4l/motornoe-maslo-MOBIL-1-0W-20-4l.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/motornoe-maslo-comma-eco-llp-0w-20-5l/motornoe-maslo-comma-eco-llp-0w-20-5l.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/motornoe-maslo-comma-eco-llp-0w-20-5l/motornoe-maslo-comma-eco-llp-0w-20-5l.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/motornoe-maslo-shell-helix-ultra-professional-ar-l-5w-30-5l/motornoe-maslo-shell-helix-u_pYPdMfM.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/motornoe-maslo-shell-helix-ultra-professional-ar-l-5w-30-5l/motornoe-maslo-shell-helix-u_pYPdMfM.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/promyvka-masljanoj-sistemy-comma-flush-out-5l/promyvka-masljanoj-sistemy-comma-flush-out-5l.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/promyvka-masljanoj-sistemy-comma-flush-out-5l/promyvka-masljanoj-sistemy-comma-flush-out-5l.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/promyvka-masljanoj-sistemy-liqui-moly-motorclean-1883-05l/promyvka-masljanoj-sistemy-liq_sB7ww2q.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/promyvka-masljanoj-sistemy-liqui-moly-motorclean-1883-05l/promyvka-masljanoj-sistemy-liq_sB7ww2q.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/royal-canin-fit-32/royal-canin-fit-32.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/royal-canin-fit-32/royal-canin-fit-32.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/transmissionnoe-maslo-comma-mvmtf-plus-75w-5l/transmissionnoe-maslo-comma-mvmtf-plus-75w-5l.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/transmissionnoe-maslo-comma-mvmtf-plus-75w-5l/transmissionnoe-maslo-comma-mvmtf-plus-75w-5l.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/transmissionnoe-maslo-liqui-moly-top-tec-atf-1200-8040-5l/transmissionnoe-maslo-liqui-mo_7Ni3PL4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/transmissionnoe-maslo-liqui-moly-top-tec-atf-1200-8040-5l/transmissionnoe-maslo-liqui-mo_7Ni3PL4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/transmissionnoe-maslo-shell-spirax-s6-gxme-75w-80-1l/transmissionnoe-maslo-shell-spirax-_VlKhnR9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/transmissionnoe-maslo-shell-spirax-s6-gxme-75w-80-1l/transmissionnoe-maslo-shell-spirax-_VlKhnR9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/migrations/0002_remove_order_total.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/migrations/0002_remove_order_total.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/migrations/0003_remove_order_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/migrations/0003_remove_order_user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/migrations/0004_auto_20190506_1334.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/migrations/0004_auto_20190506_1334.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/migrations/0005_auto_20190506_1335.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/migrations/0005_auto_20190506_1335.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/migrations/0006_auto_20190507_1610.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/migrations/0006_auto_20190507_1610.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/migrations/0007_auto_20190507_1817.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/migrations/0007_auto_20190507_1817.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/1 (1).jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/1 (1).jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/1 (2).jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/1 (2).jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/35766227_images_11141413035.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/35766227_images_11141413035.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/3623.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/3623.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/3644.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/3644.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/51797724_images_7778649306.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/51797724_images_7778649306.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/5194.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/5194.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/80_1500x_1500503406.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/80_1500x_1500503406.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/Liqui_Moly_Top_Tec_ATF_1200_5L_s-500x500.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/Liqui_Moly_Top_Tec_ATF_1200_5L_s-500x500.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/f89f07fc66422fecbb1151e456d5d942.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/f89f07fc66422fecbb1151e456d5d942.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_images/l_hae5454g.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/product_images/l_hae5454g.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/css/changelists.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/changelists.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/css/fonts.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/fonts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/forms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/css/rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/css/widgets.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/widgets.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/fonts/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/fonts/LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/fonts/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/fonts/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/fonts/Roboto-Bold-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/fonts/Roboto-Bold-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/fonts/Roboto-Light-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/fonts/Roboto-Light-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/fonts/Roboto-Regular-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/fonts/Roboto-Regular-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/calendar-icons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/calendar-icons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/gis/move_vertex_off.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/gis/move_vertex_off.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/gis/move_vertex_on.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/gis/move_vertex_on.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/icon-addlink.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/icon-addlink.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/icon-alert.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/icon-alert.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/icon-calendar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/icon-calendar.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/icon-changelink.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/icon-changelink.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/icon-clock.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/icon-clock.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/icon-deletelink.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/icon-deletelink.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/icon-no.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/icon-no.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/icon-unknown-alt.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/icon-unknown-alt.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/icon-unknown.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/icon-unknown.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/icon-yes.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/icon-yes.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/inline-delete.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/inline-delete.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/search.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/search.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/selector-icons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/selector-icons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/sorting-icons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/sorting-icons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/tooltag-add.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/tooltag-add.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/img/tooltag-arrowright.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/img/tooltag-arrowright.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/SelectBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/SelectBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/SelectFilter2.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/SelectFilter2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/actions.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/actions.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/admin/DateTimeShortcuts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/admin/DateTimeShortcuts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/admin/RelatedObjectLookups.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/admin/RelatedObjectLookups.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/cancel.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/cancel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/change_form.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/change_form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/collapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/collapse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/collapse.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/collapse.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/core.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/inlines.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/inlines.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/inlines.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/inlines.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/jquery.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/jquery.init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/popup_response.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/popup_response.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/prepopulate.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/prepopulate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/prepopulate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/prepopulate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/prepopulate_init.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/prepopulate_init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/timeparse.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/timeparse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/urlify.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/urlify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/vendor/jquery/LICENSE-JQUERY.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/vendor/jquery/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/vendor/jquery/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/vendor/jquery/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/vendor/jquery/jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/vendor/xregexp/LICENSE-XREGEXP.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/vendor/xregexp/xregexp.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/vendor/xregexp/xregexp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/vendor/xregexp/xregexp.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/vendor/xregexp/xregexp.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap-theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-theme.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap-theme.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-theme.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap-theme.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-theme.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap-theme.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/shop-homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/shop-homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/glyphicons-halflings-regular.eot" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/glyphicons-halflings-regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/javascript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/npm.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/npm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/css/bootstrap-theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/css/bootstrap-theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/css/bootstrap-theme.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/css/bootstrap-theme.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/css/bootstrap-theme.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/css/bootstrap-theme.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/css/bootstrap-theme.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/css/bootstrap-theme.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/css/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/css/bootstrap.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/css/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/css/bootstrap.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/css/shop-homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/css/shop-homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/fonts/glyphicons-halflings-regular.eot" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/fonts/glyphicons-halflings-regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/js/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/js/javascript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/js/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_dev/js/npm.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/js/npm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static_in_dev/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_dev/css/main.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -229,23 +36,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ecomapp/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-              <folding>
-                <element signature="e#24#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ecomapp/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="66" column="108" selection-start-line="66" selection-start-column="108" selection-end-line="66" selection-end-column="108" />
+            <state relative-caret-position="54">
+              <caret line="233" column="152" lean-forward="true" selection-start-line="233" selection-start-column="152" selection-end-line="233" selection-end-column="152" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#div#0;n#a#0;n#div#1;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -265,8 +63,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ecomapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="86" column="37" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
+            <state relative-caret-position="1830">
+              <caret line="144" selection-start-line="144" selection-end-line="144" />
+              <folding>
+                <element signature="e#24#63#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ecomapp/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -283,23 +93,33 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ecomapp/templates/category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="141" column="8" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="8" />
+            <state relative-caret-position="210">
+              <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+              <folding>
+                <element signature="e#1898#1925#0#HTML" expanded="true" />
+                <element signature="e#3226#3296#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ecomapp/forms.py">
+        <entry file="file://$PROJECT_DIR$/ecomapp/templates/search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1590">
-              <caret line="109" column="6" selection-start-line="109" selection-start-column="6" selection-end-line="109" selection-end-column="6" />
-              <folding>
-                <element signature="e#24#48#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="945">
+              <caret line="63" column="61" selection-start-line="63" selection-start-column="61" selection-end-line="63" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54915">
+              <caret line="3661" column="24" selection-start-line="3661" selection-start-column="24" selection-end-line="3661" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -316,9 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>owl-carousel</find>
-      <find>active-banner-slider</find>
-      <find>carousel</find>
       <find>no</find>
       <find>.owl</find>
       <find>.owl-</find>
@@ -346,6 +163,9 @@
       <find>navbar</find>
       <find>.s_product_text</find>
       <find>banner</find>
+      <find>pagination</find>
+      <find>sidebar</find>
+      <find>sidebar-fi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -372,13 +192,11 @@
         <option value="$PROJECT_DIR$/static/css/owl.carousel.css" />
         <option value="$PROJECT_DIR$/static_in_dev/css/owl.carousel.css" />
         <option value="&lt;40fa1eb2-eb94-47bc-baeb-9626d7c2f9e1&gt;/project/djangoshop/static_root/css/owl.carousel.css" />
-        <option value="$PROJECT_DIR$/static_in_dev/css/main.css" />
         <option value="&lt;40fa1eb2-eb94-47bc-baeb-9626d7c2f9e1&gt;/project/djangoshop/static/css/main.css" />
         <option value="&lt;40fa1eb2-eb94-47bc-baeb-9626d7c2f9e1&gt;/project/djangoshop/static_in_dev/css/main.css" />
         <option value="$PROJECT_DIR$/ecomapp/templates/checkout.html" />
         <option value="$PROJECT_DIR$/ecomapp/templates/contact.html" />
         <option value="$PROJECT_DIR$/ecomapp/filters.py" />
-        <option value="$PROJECT_DIR$/djangoshop/settings.py" />
         <option value="$PROJECT_DIR$/ecomapp/templates/thank_you.html" />
         <option value="$PROJECT_DIR$/orders/admin.py" />
         <option value="$PROJECT_DIR$/orders/forms.py" />
@@ -386,28 +204,31 @@
         <option value="$PROJECT_DIR$/orders/views.py" />
         <option value="$PROJECT_DIR$/ecomapp/templates/order.html" />
         <option value="$PROJECT_DIR$/ecomapp/templates/pdf.html" />
-        <option value="$PROJECT_DIR$/static/scss/theme/_product.scss" />
         <option value="$PROJECT_DIR$/static/scss/theme/_banner.scss" />
-        <option value="$PROJECT_DIR$/static/css/main.css" />
         <option value="$PROJECT_DIR$/ecomapp/admin.py" />
         <option value="$PROJECT_DIR$/ecomapp/models.py" />
         <option value="$PROJECT_DIR$/ecomapp/templates/cart.html" />
-        <option value="$PROJECT_DIR$/ecomapp/templates/search.html" />
         <option value="$PROJECT_DIR$/cart/models.py" />
         <option value="$PROJECT_DIR$/cart/forms.py" />
         <option value="$PROJECT_DIR$/ecomapp/templates/product.html" />
         <option value="$PROJECT_DIR$/cart/cart.py" />
         <option value="$PROJECT_DIR$/cart/urls.py" />
         <option value="$PROJECT_DIR$/cart/views.py" />
-        <option value="$PROJECT_DIR$/ecomapp/templates/base.html" />
         <option value="$PROJECT_DIR$/ecomapp/urls.py" />
         <option value="$PROJECT_DIR$/ecomapp/forms.py" />
-        <option value="$PROJECT_DIR$/ecomapp/views.py" />
+        <option value="$PROJECT_DIR$/static_in_dev/scss/theme/_product.scss" />
+        <option value="$PROJECT_DIR$/static/scss/theme/_product.scss" />
+        <option value="$PROJECT_DIR$/static/css/main.css" />
+        <option value="$PROJECT_DIR$/static_in_dev/css/main.css" />
         <option value="$PROJECT_DIR$/ecomapp/templates/category.html" />
+        <option value="$PROJECT_DIR$/djangoshop/settings.py" />
+        <option value="$PROJECT_DIR$/ecomapp/templates/search.html" />
+        <option value="$PROJECT_DIR$/ecomapp/views.py" />
+        <option value="$PROJECT_DIR$/ecomapp/templates/base.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="25" />
     <option name="width" value="683" />
     <option name="height" value="743" />
@@ -447,6 +268,28 @@
               <item name="ecomapp" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="djangoshop_old_version" type="b2602c69:ProjectViewProjectNode" />
+              <item name="djangoshop_old_version" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="djangoshop_old_version" type="b2602c69:ProjectViewProjectNode" />
+              <item name="djangoshop_old_version" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="djangoshop_old_version" type="b2602c69:ProjectViewProjectNode" />
+              <item name="djangoshop_old_version" type="462c0819:PsiDirectoryNode" />
+              <item name="static_in_dev" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="djangoshop_old_version" type="b2602c69:ProjectViewProjectNode" />
+              <item name="djangoshop_old_version" type="462c0819:PsiDirectoryNode" />
+              <item name="static_in_dev" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -468,7 +311,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -488,8 +331,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.base.html">
+  <component name="RunManager" selected="JavaScript Debug.category.html">
     <configuration name="base.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoshop/ecomapp/templates/base.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="category.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoshop_old_version/ecomapp/templates/category.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="djangoshop" type="Python.DjangoServer" factoryName="Django server">
@@ -517,6 +363,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.category.html" />
         <item itemvalue="JavaScript Debug.base.html" />
       </list>
     </recent_temporary>
@@ -580,23 +427,28 @@
       <workItem from="1562061350891" duration="12057000" />
       <workItem from="1562140771429" duration="12907000" />
       <workItem from="1562317988390" duration="9687000" />
-      <workItem from="1562581104199" duration="853000" />
+      <workItem from="1562581104199" duration="6695000" />
+      <workItem from="1562668248293" duration="10091000" />
+      <workItem from="1562751243939" duration="11265000" />
+      <workItem from="1562834624617" duration="11095000" />
+      <workItem from="1562930047201" duration="9354000" />
+      <workItem from="1563187660366" duration="1351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="417708000" />
+    <option name="totallyTimeSpent" value="466706000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1366" height="743" extended-state="7" />
+    <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18333334" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19848485" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32884902" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32899022" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39937598" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -623,7 +475,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.php" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ecomapp/templates/prepros-6.config" />
     <entry file="file://$PROJECT_DIR$/ecomapp/templates/index2.html" />
     <entry file="file://$PROJECT_DIR$/static/js/nouislider.min.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -655,13 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="79" selection-start-line="79" selection-end-line="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static_in_dev/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="1501" column="21" lean-forward="true" selection-start-line="1501" selection-start-column="21" selection-end-line="1501" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -720,24 +564,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/scss/theme/_product.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="521" column="14" lean-forward="true" selection-start-line="521" selection-start-column="14" selection-end-line="521" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/countdown.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="4" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="1627" column="2" selection-start-line="1627" selection-start-column="2" selection-end-line="1627" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -755,13 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
           <caret line="41" column="48" selection-start-line="40" selection-start-column="92" selection-end-line="40" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ecomapp/templates/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="85" column="75" selection-start-line="85" selection-start-column="75" selection-end-line="85" selection-end-column="75" />
         </state>
       </provider>
     </entry>
@@ -861,13 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangoshop/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-441">
-          <caret line="55" column="32" lean-forward="true" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cart/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -918,20 +734,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ecomapp/models.py">
+    <entry file="file://$PROJECT_DIR$/static_in_dev/scss/theme/_product.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        <state relative-caret-position="178">
+          <caret line="437" column="34" lean-forward="true" selection-start-line="437" selection-start-column="34" selection-end-line="437" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/scss/theme/_product.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="437" column="18" selection-start-line="437" selection-start-column="18" selection-end-line="437" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static_in_dev/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54045">
+          <caret line="3603" column="24" selection-start-line="3603" selection-start-column="24" selection-end-line="3603" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangoshop/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ecomapp/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="109" column="6" selection-start-line="109" selection-start-column="6" selection-end-line="109" selection-end-column="6" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ecomapp/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" column="108" selection-start-line="66" selection-start-column="108" selection-end-line="66" selection-end-column="108" />
+        <state relative-caret-position="54">
+          <caret line="233" column="152" lean-forward="true" selection-start-line="233" selection-start-column="152" selection-end-line="233" selection-end-column="152" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#a#0;n#div#1;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -947,8 +794,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ecomapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="86" column="37" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
+        <state relative-caret-position="1830">
+          <caret line="144" selection-start-line="144" selection-end-line="144" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ecomapp/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
@@ -962,20 +819,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ecomapp/forms.py">
+    <entry file="file://$PROJECT_DIR$/ecomapp/templates/category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1590">
-          <caret line="109" column="6" selection-start-line="109" selection-start-column="6" selection-end-line="109" selection-end-column="6" />
+        <state relative-caret-position="210">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
           <folding>
-            <element signature="e#24#48#0" expanded="true" />
+            <element signature="e#1898#1925#0#HTML" expanded="true" />
+            <element signature="e#3226#3296#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ecomapp/templates/category.html">
+    <entry file="file://$PROJECT_DIR$/ecomapp/templates/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="141" column="8" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="8" />
+        <state relative-caret-position="945">
+          <caret line="63" column="61" selection-start-line="63" selection-start-column="61" selection-end-line="63" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54915">
+          <caret line="3661" column="24" selection-start-line="3661" selection-start-column="24" selection-end-line="3661" selection-end-column="24" />
         </state>
       </provider>
     </entry>

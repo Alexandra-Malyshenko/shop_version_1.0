@@ -59,41 +59,60 @@ def category_view(request, category_slug):
     category = Category.objects.get(slug=category_slug)
     categories = Category.objects.all()
     products = Product.objects.filter(available=True, category=category)
-    sort_form = SortFilterForm(request.GET)
+    # sort_form = SortFilterForm(request.GET)
     # filter_form = filter_form_search(request, category_slug)
     filter_form = ProductFilterForm(request.GET)
-    if filter_form.is_valid() and sort_form.is_valid():
+    if filter_form.is_valid():
+
+        # products = sort_by(filter_form, products)
+
         if filter_form.cleaned_data["min_price"]:
             products = products.filter(price__gte=filter_form.cleaned_data["min_price"])
 
         if filter_form.cleaned_data["max_price"]:
             products = products.filter(price__lte=filter_form.cleaned_data["max_price"])
 
-        # if filter_form.cleaned_data["ordering"]:
-        #     products = products.order_by(filter_form.cleaned_data["ordering"])
+        if filter_form.cleaned_data["ordering"]:
+            products = products.order_by(filter_form.cleaned_data["ordering"])
 
-        if sort_form.cleaned_data["ordering"]:
-            products = products.order_by(sort_form.cleaned_data["ordering"])
+        # if sort_form.cleaned_data["ordering"]:
+        #     products = products.order_by(sort_form.cleaned_data["ordering"])
+
 
         if filter_form.cleaned_data["the_choices"]:
 
             items = filter_form.cleaned_data["the_choices"]
+            items_ =[]
             if items:
-                items_products = []
                 for i in items:
-                    items_products += products.filter(volume=int(i))
-                products = items_products
+                    items_.append(int(i))
 
-    paginator = Paginator(products, 6)
+                products = products.filter(volume__in=items_)
+
+
+    current_page = Paginator(products, 6)
     page = request.GET.get('page')
     try:
-        products = paginator.page(page)
+        products = current_page.page(page)
     except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        products = paginator.page(1)
+        # Если None, то выбираем первую страницу
+        products= current_page.page(1)
     except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        products = paginator.page(paginator.num_pages)
+        # Если вышли за последнюю страницу, то возвращаем последнюю
+        products = current_page.page(current_page.num_pages)
+
+
+    # products = paginator.page(page)
+    # paginator = Paginator(products, 6)
+    # page = request.GET.get('page')
+    # try:
+    #     products = paginator.page(page)
+    # except PageNotAnInteger:
+    #     # If page is not an integer, deliver first page.
+    #     products = paginator.page(1)
+    # except EmptyPage:
+    #     # If page is out of range (e.g. 9999), deliver last page of results.
+    #     products = paginator.page(paginator.num_pages)
 
     # if sort_form.is_valid():
     #     if sort_form.cleaned_data["ordering"]:
@@ -113,10 +132,16 @@ def category_view(request, category_slug):
         'cart': cart,
         'cart_product_form': cart_product_form,
         'filter_form': filter_form,
-        'sort_form': sort_form,
+        # 'sort_form': sort_form,
     }
 
     return render(request, 'category.html', context)
+
+# def sort_by(form, items):
+#     if form.cleaned_data["ordering"]:
+#         items = items.order_by(form.cleaned_data["ordering"])
+#     return items
+
 
 
 def contact_view(request):
@@ -134,27 +159,53 @@ def contact_view(request):
 
 
 def product_search_view(request):
-    found_search =[]
     cart_product_form = CartAddProductForm()
     cart = Cart(request)
     products = Product.objects.filter(available=True)
     categories = Category.objects.all()
-    filter_form = ProductFilterForm(request.GET)
-    if filter_form.is_valid():
-        if filter_form.cleaned_data["min_price"]:
-            products = products.filter(price__gte=filter_form.cleaned_data["min_price"])
 
-        if filter_form.cleaned_data["max_price"]:
-            products = products.filter(price__lte=filter_form.cleaned_data["max_price"])
-
-    question = request.GET.get('q')
+    question = str(request.GET.get('q'))
     if question is not None:
-        filters = Q()
+        # filters = Q()
+        # for word in question.split(" "):
+        #     filters |= Q(title__icontains=word)
+        found_search = Product.objects.filter(title__search=question)
 
-        for word in question.split(" "):
-            filters |= Q(title__icontains=word)
+        filter_form = ProductFilterForm(request.GET)
+        if filter_form.is_valid():
+            if filter_form.cleaned_data["min_price"]:
+                found_search = found_search.filter(price__gte=filter_form.cleaned_data["min_price"])
 
-        found_search = Product.objects.filter(filters)
+            if filter_form.cleaned_data["max_price"]:
+                found_search = found_search.filter(price__lte=filter_form.cleaned_data["max_price"])
+
+            if filter_form.cleaned_data["ordering"]:
+                found_search = found_search.order_by(filter_form.cleaned_data["ordering"])
+
+            if filter_form.cleaned_data["the_brand"]:
+                found_search = found_search.filter(filter_form.cleaned_data["the_brand"])
+
+            if filter_form.cleaned_data["the_choices"]:
+
+                items = filter_form.cleaned_data["the_choices"]
+                items_ =[]
+                if items:
+                    for i in items:
+                        items_.append(int(i))
+
+                    found_search = found_search.filter(volume__in=items_)
+
+
+    current_page = Paginator(found_search, 6)
+    page = request.GET.get('page')
+    try:
+        found_search = current_page.page(page)
+    except PageNotAnInteger:
+        # Если None, то выбираем первую страницу
+        found_search = current_page.page(1)
+    except EmptyPage:
+        # Если вышли за последнюю страницу, то возвращаем последнюю
+        found_search = current_page.page(current_page.num_pages)
 
     context ={
         'categories': categories,

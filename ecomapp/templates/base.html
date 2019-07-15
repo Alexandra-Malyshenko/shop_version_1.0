@@ -190,61 +190,71 @@
 				<div class="col-lg-8 col-md-12">
 					<div class="row">
                         {% for cat in categories %}
-                            {% if cat.slug == 'motornye-masla' %}
-                            <div class="col-lg-8 col-md-8">
-                                <a href="{{ cat.get_absolute_url }}">
-                                    <div class="single-deal">
-                                        <div class="overlay"></div>
-                                        <img class="img-fluid w-100" src="{% static 'img/category/c1.jpg' %}" alt="">
-                                        <div class="deal-details">
-                                            <h6 class="deal-title">Моторные масла</h6>
-                                        </div>
-                                        </a>
-                                    </div>
-                                </a>
-                            </div>
-                            {% elif cat.slug == 'promyvka-maslyanoj-sistemy' %}
+                            {% if cat.slug == 'masljanye-filtry' %}
                             <div class="col-lg-4 col-md-4">
                                 <a href="{{ cat.get_absolute_url }}">
                                     <div class="single-deal">
                                         <div class="overlay"></div>
-                                        <img class="img-fluid w-100" src="{% static 'img/category/c2.jpg' %}" alt="" >
+                                        <img class="img-fluid w-100" style="height: 200px; background-size: cover;" src="{% static 'img/category/c5.jpg' %}" alt="" >
                                         <div class="deal-details">
-                                            <h6 class="deal-title">Промывочные масла</h6>
+                                            <h6 class="deal-title">Маслянные фильтры</h6>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            {% elif cat.slug == 'prisadki-k-motornym-maslam' %}
-                            <div class="col-lg-4 col-md-4">
-                                <a href="{{ cat.get_absolute_url }}">
-                                    <div class="single-deal">
-                                        <div class="overlay"></div>
-                                        <img class="img-fluid w-100" src="{% static 'img/category/c3.jpg' %}" alt="">
-                                        <div class="deal-details">
-                                            <h6 class="deal-title">Присадка к маслам</h6>
-                                        </div>
-                                        </a>
-                                    </div>
-                                </a>
-                            </div>
-                            {% else %}
+                            {% elif cat.slug == 'motornye-masla-dlja-gruzovyh-avtomobilej' %}
                             <div class="col-lg-8 col-md-8">
                                 <a href="{{ cat.get_absolute_url }}">
                                     <div class="single-deal">
                                         <div class="overlay"></div>
-                                        <img class="img-fluid w-100" src="{% static 'img/category/c4.jpg' %}">
+                                        <img class="img-fluid w-100" style="height: 200px;background-size: cover;" src="{% static 'img/category/c51.jpg' %}"alt="">
                                         <div class="deal-details">
-                                            <h6 class="deal-title">Трансмиссонные масла</h6>
+                                            <h6 class="deal-title">Моторные масла для ГА</h6>
                                         </div>
-                                        </a>
                                     </div>
                                 </a>
                             </div>
-                            {% endif %}
-                        {% endfor %}
+                            {% elif cat.slug == 'motornye-masla-dlja-legkovyh-avtomobilej' %}
+                            <div class="col-lg-8 col-md-8">
+                                <a href="{{ cat.get_absolute_url }}">
+                                    <div class="single-deal">
+                                        <div class="overlay"></div>
+                                        <img class="img-fluid w-100" style="height: 200px; background-size: cover;" src="{% static 'img/category/c33.jpg' %}" alt="">
+                                        <div class="deal-details">
+                                            <h6 class="deal-title">Моторные масла для ЛА</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% elif cat.slug == 'ohlazhdajuschie-zhidkosti' %}
+                            <div class="col-lg-4 col-md-4">
+                                <a href="{{ cat.get_absolute_url }}">
+                                    <div class="single-deal">
+                                        <div class="overlay"></div>
+                                        <img class="img-fluid w-100" style="height: 200px;background-size: cover;" src="{% static 'img/category/c42.jpg' %}" alt="">
+                                        <div class="deal-details">
+                                            <h6 class="deal-title">Охлаждающие жидкости</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
 					</div>
 				</div>
+                {% elif cat.slug == 'transmissionnye-masla' %}
+                <div class="col-lg-4 col-md-6">
+                    <a href="{{ cat.get_absolute_url }}">
+                        <div class="single-deal">
+                            <div class="overlay"></div>
+                            <img class="img-fluid w-100" style="background-size: cover;" src="{% static 'img/category/c52.jpg' %}">
+                            <div class="deal-details">
+                                <h6 class="deal-title">Трансмиссонные масла</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                            {% endif %}
+                        {% endfor %}
 			</div>
 		</div>
 	</section>
@@ -270,6 +280,7 @@
 					<!-- single product -->
                     {% for prod in products %}
                      {% if prod.category == cat %}
+                        {% if forloop.counter <= 4 %}
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
                                 <a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">
@@ -292,6 +303,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                      {% endif %}
                     {% endfor %}
 				</div>

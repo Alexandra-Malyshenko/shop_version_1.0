@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'ecomapp',
     'crispy_forms',
     'cart',
     'orders',
+    'bootstrap_pagination',
 ]
 
 MIDDLEWARE = [

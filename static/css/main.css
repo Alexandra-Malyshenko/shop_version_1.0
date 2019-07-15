@@ -3490,11 +3490,12 @@ label {
 
 .pagination {
   margin-top: 10px;
-  border-left: 1px solid #eee;
+  margin-bottom: 30px;
+  /*border-left: 1px solid #eee;*/
   border-radius: 0px; }
   .pagination a {
     width: 40px;
-    line-height: 40px;
+    /*line-height: 40px;*/
     text-align: center;
     display: inline-block;
     background: #fff; }
@@ -3658,10 +3659,10 @@ label {
   padding-left: 32px; }
 
 .sidebar-filter {
-  margin-top: 50px; }
+  /*margin-top: 50px; */ }
   .sidebar-filter .top-filter-head {
-    line-height: 60px;
-    background: #828bb3;
+    line-height: 45px;
+    background: #666666;
     padding: 0 30px;
     font-size: 16px;
     font-weight: 400;
@@ -3675,8 +3676,9 @@ label {
     text-transform: uppercase;
     margin-top: 5px; }
   .sidebar-filter .common-filter {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 25px; }
+    border: 1px solid #eee;
+    padding-bottom: 25px;
+    padding-top: 25px; }
     .sidebar-filter .common-filter .filter-list {
       position: relative;
       padding-left: 28px; }

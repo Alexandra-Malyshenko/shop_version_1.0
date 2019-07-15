@@ -1,6 +1,7 @@
 {% extends  'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load bootstrap_pagination %}
 
 
 {% block content %}
@@ -27,68 +28,62 @@
     <div class="container here">
 		<div class="row">
             <div class="col-xl-3 col-lg-4 col-md-5">
-                <div class="sidebar-categories">
-					<div class="head">Производитель</div>
-					<ul class="main-categories">
-						<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								 class="lnr lnr-arrow-right"></span>{{ category.name }}<span class="number"></span></a>
-							{% for product in products %}
-                                <ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
-                                    <li class="main-nav-list child"><a href="#">{{ product.brand }}<span class="number">(13)</span></a></li>
-                                </ul>
-                            {% endfor %}
-						</li>
-                    </ul>
-                </div>
-                <div class="sidebar-filter mt-50">
-                    <form method="get">
-{#                        <div class="top-filter-head">Сортировать </div>#}
-{#                        <div class="common-filter" style="padding-bottom: 50px">#}
-{#                            {{ filter_form.ordering|as_crispy_field }}#}
-{#                        </div>#}
-                        <div class="top-filter-head">Цена: </div>
-                        <div class="common-filter">
-                            <label> {{ filter_form.min_price|as_crispy_field }} </label>
-                            <label> {{ filter_form.max_price|as_crispy_field }} </label>
+                <form method="get">
+                    <div class="sidebar-categories" style="position: absolute; top: -50px; left: 900px;">
+                        <div class="main-categories" id="myOptions">
+                            {{ filter_form.ordering }}
                         </div>
-                        <div class="top-filter-head">Сортировать по литражу</div>
-                        <div class="common-filter">
-                            {% for field in filter_form.the_choices %}
-                                <ul class="check-volume">
-                                    <li class="filter-list">{{ field }} <label> л </label></li>
-                                </ul>
-                            {% endfor %}
-                        </div>
-                        <div class="top-filter-head">Производитель</div>
-                        <div class="common-filter">
-                            {% for field in filter_form.the_brand %}
-                                <ul class="check-volume">
-                                    <li class="filter-list">{{ field }}</li>
-                                </ul>
-                            {% endfor %}
-                        </div>
-                        <div class="common-filter">
-                            <input class="btn primary-btn" type="submit" value="Поиск">
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="sidebar-filter mt-50">
+{#                            <div class="top-filter-head">Сортировать </div>#}
+{#                            <div class="common-filter" style="padding-bottom: 50px">#}
+{#                                <div id="myOptions">#}
+{#                                    {{ filter_form.ordering|as_crispy_field }}#}
+{#                                </div>#}
+{#                            </div>#}
+                            <div class="top-filter-head">Цена </div>
+                            <div class="common-filter text-left" style="padding-left: 10px;">
+                                <label> {{ filter_form.min_price|as_crispy_field }} </label>
+                                <label> {{ filter_form.max_price|as_crispy_field }} </label>
+                            </div>
+                            <div class="top-filter-head">Литраж</div>
+                            <div class="common-filter">
+                                {% for field in filter_form.the_choices %}
+                                    <ul class="check-volume">
+                                        <li class="filter-list">{{ field }} <label> л </label></li>
+                                    </ul>
+                                {% endfor %}
+                            </div>
+                            <div class="top-filter-head">Производитель</div>
+                            <div class="common-filter">
+                                {% for field in filter_form.the_brand %}
+                                    <ul class="check-volume">
+                                        <li class="filter-list">{{ field }}</li>
+                                    </ul>
+                                {% endfor %}
+                            </div>
+                            <div class="common-filter text-center">
+                                <input id="sub" class="btn" type="submit" value="Поиск" style="width: 140px; height: 45px; background: #888888; color: white;">
+                            </div>
+                    </div>
+                </form>
             </div>
             <div class="col-xl-9 col-lg-8 col-md-7">
-                <div class="filter-bar d-flex flex-wrap justify-content-end">
-                    <div class="sorting ">
-                        <form method="get">
-                            <div id="myOptions">
-                                {{ sort_form.ordering }}
-                            </div>
-                            <input id="sub" class="btn primary-btn" type="submit" style="display: none">
-                        </form>
+{#                <div class="filter-bar d-flex flex-wrap justify-content-end">#}
+{#                    <div class="sorting ">#}
+{#                        <form method="get">#}
+{#                            <div id="myOptions">#}
+{#                                {{ sort_form.ordering }}#}
+{#                            </div>#}
+{#                            <input id="sub" class="btn primary-btn" type="submit" style="display: none">#}
+{#                        </form>#}
 {#                        <select id="myOptions">#}
 {#                            <option value='option3' data-sort='title' id="sort-desc">По алфавиту</option>#}
 {#                            <option value='option1' data-sort='price' id="sort-asc">Сначала дешевые</option>#}
 {#                            <option value='option2' data-sort='-price' id="sort-desc">Сначала дорогие</option>#}
 {#                        </select>#}
-                    </div>
-				</div>
+{#                    </div>#}
+{#				</div>#}
                 <section class="lattest-product-area pb-40 category-list">
                     <div class="row goods-wrap">
                         {% for prod in products %}
@@ -118,6 +113,34 @@
                         {% endfor %}
                     </div>
                 </section>
+                <div class="row justify-content-center">
+                    <div class="large-3 large-offset-5 columns" >
+                        {% bootstrap_paginate products %}
+                    </div>
+                </div>
+{#                <div class="row justify-content-center">#}
+{#                    <div class="large-3 large-offset-5 columns">#}
+{#                        <ul class="pagination" style="border-left: none; font-size: 18px; margin-bottom: 30px;">#}
+{#                            {% if products.has_previous %}#}
+{#                                <li class="arrow"><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>#}
+{#                            {% else %}#}
+{#                                <li class="arrow unavailable"><a href="">&laquo;</a></li>#}
+{#                            {% endif %}#}
+{#                            {% for num in products.paginator.page_range %}#}
+{#                                {% if num == products.number %}#}
+{#                                    <li class="current"><a href="?page={{ num }}">{{ num }}</a></li>#}
+{#                                {% else %}#}
+{#                                    <li><a href="?page={{ num }}"> {{ num }}</a></li>#}
+{#                                {% endif %}#}
+{#                            {% endfor %}#}
+{#                            {% if products.has_next %}#}
+{#                                <li class="arrow"><a href="?page={{ products.next_page_number }}">&raquo;</a>#}
+{#                            {% else %}#}
+{#                                <li class="arrow unavailable"><a href="">&raquo;</a></li>#}
+{#                            {% endif %}#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </div>#}
 {#                <div class="pagination">#}
 {##}
 {#                    {% if products.has_previous %}#}
@@ -139,26 +162,8 @@
 {#                </div>#}
             </div>
         </div>
-        <div class="row">
-            <div class="large-3 large-offset-5 columns">
-                <ul class="pagination">
-                    {% if products.has_previous %}
-                        <li class="arrow"><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
-                    {% endif %}
-                    {% for num in products.paginator.page_range %}
-                        {% if num == products.number %}
-                            <li class="current"><b>{{ num }}</b></li>
-                        {% else %}
-                            <li><a href="?page={{ num }}"> {{ num }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                    {% if products_list.has_next %}
-                        <li class="arrow"><a href="?page={{ products_list.next_page_number }}">&raquo;</a>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
     </div>
+
 
 
 
