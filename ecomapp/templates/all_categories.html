@@ -32,7 +32,7 @@
                 <div class="d-flex flex-wrap align-items-center justify-content-start" style="font-family: inherit; font-size: 19px;
                     padding-bottom: 50px;">
                     <a style="color: #666666" href="/"><i class="fas fa-home"></i> Главная <span class="lnr lnr-arrow-right"></span></a>
-                    <a style="color: #666666" href="{{ category.get_absolute_url }}"> {{ category.name }} </a>
+                    <a style="color: #666666" href=""> Все продукты </a>
 {#                    <div class="sidebar-filter">#}
         {#                <div class="top-filter-head">#}
                             <nav class="d-flex align-items-center">
@@ -59,7 +59,7 @@
 {#                                    {{ filter_form.ordering|as_crispy_field }}#}
 {#                                </div>#}
 {#                            </div>#}
-                            <a id="rotate-icon-1" data-toggle="collapse" href="#allcategorieslist" aria-expanded="false" aria-controls="fruitsVegetable">
+                        <a id="rotate-icon-1" data-toggle="collapse" href="#allcategorieslist" aria-expanded="false" aria-controls="fruitsVegetable">
                             <div class="top-filter-head justify-content-between">
                                 <span>Категории товаров</span>
                                 <span style="padding-left: 35px;">
@@ -71,13 +71,9 @@
                             <ul class="collapse show" id="allcategorieslist" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
 
                                 {% for cat in categories %}
-                                    {% if cat.name == category.name %}
-                                        <li class="main-nav-list child filter-list active-category"><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
-                                    {% else %}
-                                        <li class="main-nav-list child filter-list"><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
-                                    {% endif %}
+                                    <li class="main-nav-list child filter-list"><a href="{{ cat.get_absolute_url }}"><span>{{ cat.name }}</span></a></li>
                                 {% endfor %}
-                                <li class="main-nav-list child filter-list"><a href="{% url 'all_categories' %}"><span>Все продукты</span></a></li>
+                                <li class="main-nav-list child filter-list active-category"><a href="{% url 'all_categories' %}"><span>Все продукты</span></a></li>
                             </ul>
                         </div>
                         <a id="rotate-icon-2" data-toggle="collapse" href="#filterformfrom" aria-expanded="false" aria-controls="fruitsVegetable">
@@ -105,7 +101,11 @@
                         <div class="common-filter">
                             <ul class="check-volume collapse" id="choose_volume" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
                                 {% for field in filter_form.the_choices %}
+{#                                       {% for product in products %}#}
+{#                                           {% if field.label_tag in volume %}#}
                                     <li class="filter-list" >{{ field }} <label> л </label></li>
+{#                                           {% endif %}#}
+{#                                       {% endfor %}#}
                                 {% endfor %}
                             </ul>
                         </div>
@@ -118,7 +118,7 @@
                             </div>
                         </a>
                         <div class="common-filter">
-                            <ul class=" collapse" id="choose_brand" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+                            <ul class="check-volume collapse" id="choose_brand" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
                                 {% for field in filter_form.the_brand %}
                                     <li class="filter-list">{{ field }}</li>
                                 {% endfor %}
@@ -133,7 +133,7 @@
                             </div>
                         </a>
                         <div class="common-filter">
-                            <ul class="check-sae collapse" id="choose_sae" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+                            <ul class="check-volume collapse" id="choose_sae" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
                                 {% for field in filter_form.the_sae %}
                                     <li class="filter-list">{{ field }}</li>
                                 {% endfor %}
@@ -163,50 +163,33 @@
 {#                    </div>#}
 {#				</div>#}
                 <section class="lattest-product-area pb-40 category-list">
-                    {% if category.slug != 'masljanye-filtry' and category.slug != 'industrialnye-masla' %}
-                        <div class="row goods-wrap">
-                            {% for prod in products %}
-                                <div class="col-lg-4 col-md-6" data-price="{{ prod.price }}" data-title="{{ prod.title }}" data-volume="{{ prod.volume }}">
-                                    <div class="single-product" data-price="{{ prod.price }}" data-title="{{ prod.title }}" data-volume="{{ prod.volume }}">
-                                        <a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">
-                                            <img class="img-fluid" src="{{ prod.image.url }}" alt="">
-                                        </a>
-                                        <div class="product-details">
-                                            <div class="text-center" style="height: 57px;">
-                                                <h6><a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">{{ prod.title }}</a></h6>
-                                            </div>
-                                            <div class="price text-center s_product_text" style="margin-top: 0px;">
-                                                <h2 class="item">{{ prod.price }} грн.</h2>
-                                            </div>
-                                            <form action="{% url 'cart:CartAdd' prod.id %}" method="post">
-                                                {% csrf_token %}
-                                                <label class="text-center" style="display: none;">Кол-во: {{ cart_product_form.quantity }}</label>
-                                                <div class="prd-bottom text-center">
-                                                    <button class="btn primary-btn" style="border: none"><i class="fas fa-cart-arrow-down" style="padding-right: 10px"></i> В корзину</button>
-                                                </div>
-                                            </form>
-
+                    <div class="row goods-wrap">
+                        {% for prod in products %}
+                            <div class="col-lg-4 col-md-6" data-price="{{ prod.price }}" data-title="{{ prod.title }}" data-volume="{{ prod.volume }}">
+                                <div class="single-product" data-price="{{ prod.price }}" data-title="{{ prod.title }}" data-volume="{{ prod.volume }}">
+                                    <a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">
+                                        <img class="img-fluid" src="{{ prod.image.url }}" alt="">
+                                    </a>
+                                    <div class="product-details">
+                                        <div class="text-center" style="height: 57px;">
+                                            <h6><a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">{{ prod.title }}</a></h6>
                                         </div>
+                                        <div class="price text-center s_product_text" style="margin-top: 0px;">
+                                            <h2 class="item">{{ prod.price }} грн.</h2>
+                                        </div>
+                                        <form action="{% url 'cart:CartAdd' prod.id %}" method="post">
+                                            {% csrf_token %}
+                                            <label class="text-center" style="display: none;">Кол-во: {{ cart_product_form.quantity }}</label>
+                                            <div class="prd-bottom text-center">
+                                                <button class="btn primary-btn" style="border: none"><i class="fas fa-cart-arrow-down" style="padding-right: 10px"></i> В корзину</button>
+                                            </div>
+                                        </form>
+
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                             <div class="row order-detail-text text-center">
-                                <div class="col-lg-12 text-center">
-                                     <h5><span>Данные продукты Вы можете подобрать и заказать по телефону у менеджера.</span></h5>
-                                     <h5><span>Подбор осуществляеться для конкретного автомобиля по VIN-коду.</span></h5>
-                                     <div class="single-footer-widget text-left" >
-                                        <h5>Контакты</h5>
-                                        <div class="footer-social d-flex align-items-center">
-                                            <a href="#"><i class="fas fa-mobile"></i> +38-099-473-16-78</a>
-                                            <a href="mailto:fastsales@gmail.com"><i class="fas fa-envelope" ></i> fastsales@gmail.com</a>
-                                        </div>
-                                     </div>
-                                </div>
-                             </div>
-                    {% endif %}
-
+                            </div>
+                        {% endfor %}
+                    </div>
 
                 </section>
 {#                <div class="row justify-content-center">#}
@@ -335,7 +318,7 @@
         </div>
     </div>
     <div id="volume-list" style="display: none" data-volume="{{ volume|safe }}">{{ volume }}</div>
-    <div id="sae-list" style="display: none" data-sae="{{ sae }}">{{ sae }}</div>
+
 
 
 
@@ -348,6 +331,9 @@
                 document.getElementById("sub").click();
                 {#document.getElementById("myOptions").style.visibility = "hidden";#}
             });
+
+            {#$(".rotate").click(function () {#}
+            {#    $("this").querySelectorAll(":scope>i").toggleClass("down");#}
 
             $("#rotate-icon-1").click(function () {
                 $("#icon-1").toggleClass("down");
@@ -365,44 +351,26 @@
                 $("#icon-5").toggleClass("down");
             });
 
-            var items = $("input:checkbox");
-            var list_volume = document.querySelector('#volume-list').getAttribute('data-volume');
-            console.log(list_volume);
-            var list_volume_json = JSON.parse(list_volume);
-            console.log(typeof(list_volume_json));
-            console.log(list_volume_json);
+            {#var items = $("input:checkbox");#}
+            {#var list_volume = document.querySelector('#volume-list').getAttribute('data-volume');#}
+            {#var list_volume_json = JSON.parse(list_volume);#}
+            {##}
+            {#console.log(list_volume_json);#}
+            {##}
+            {#var items_volume = document.querySelector('.check-volume');#}
+            {#for (let i = 0; i < items_volume.children.length; i++){#}
+            {#    var x = items_volume.children[i].getElementsByTagName('input');#}
+            {#    for (let j = 0; j < x.length; j++){#}
+            {#        var input_volume = x[j].value;#}
+            {#        console.log(input_volume);#}
+            {#        console.log(typeof (input_volume));#}
+            {#        if (list_volume_json.indexOf( +input_volume ) == -1){#}
+            {#            console.log(input_volume);#}
+            {#            x[j].parentElement.parentElement.style.display = 'none';#}
+            {#        }#}
+            {#    }#}
 
-            var items_volume = document.querySelector('.check-volume');
-            for (let i = 0; i < items_volume.children.length; i++){
-                var x = items_volume.children[i].getElementsByTagName('input');
-                for (let j = 0; j < x.length; j++){
-                    var input_volume = x[j].value;
 
-                    if (list_volume_json.indexOf( +input_volume ) == -1){
-                        {#console.log(input_volume);#}
-                        x[j].parentElement.parentElement.style.display = 'none';
-                    }
-                }
-            }
-
-            var list_sae = document.querySelector('#sae-list').getAttribute('data-sae');
-            console.log(list_sae);
-            var list_sae_json = JSON.parse(list_sae);
-            console.log(typeof(list_sae_json));
-            console.log(list_sae_json);
-
-            var items_sae = document.querySelector('.check-sae');
-            for (let i = 0; i < items_sae.children.length; i++){
-                var x = items_sae.children[i].getElementsByTagName('input');
-                for (let j = 0; j < x.length; j++){
-                    var input_sae = x[j].value;
-
-                    if (list_sae_json.indexOf( input_sae ) == -1){
-                        console.log(input_sae);
-                        x[j].parentElement.parentElement.style.display = 'none';
-                    }
-                }
-            }
 
             {#for (let j = 0; j < list_volume.length; j++) {#}
             {#    console.log(list_volume[j]);#}
@@ -419,7 +387,7 @@
 
 
 
-        });
+
 {#{% block javascript %}#}
 {##}
 {#        $(document).ready(function() {#}

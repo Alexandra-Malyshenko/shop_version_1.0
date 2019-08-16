@@ -51,7 +51,7 @@ def OrderCreate(request):
             return render(request, 'thank_you.html', {'order': order, 'categories': categories})
 
     form = OrderCreateForm()
-    return render(request, 'order.html', {'cart': cart, 'form': form})
+    return render(request, 'order.html', {'cart': cart, 'form': form, 'categories': categories})
 
 
 @staff_member_required

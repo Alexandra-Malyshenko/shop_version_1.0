@@ -1351,7 +1351,7 @@ h1, h2, h3, h4, h5, h6 {
               position: absolute;
               top: 140%;
               left: 0px;
-              min-width: 200px;
+              min-width: 334px;
               text-align: left;
               opacity: 0;
               -webkit-transition: visibility 0.5s ease;
@@ -6078,6 +6078,59 @@ label {
   font-size: 20px;
 }
 #navbarSupportedContent a {
-  font-size: 15px;
+  font-size: 13px;
 }
 /*# sourceMappingURL=main.css.map */
+/* Medium Layout: 1280px */
+/* Tablet Layout: 768px */
+/* Mobile Layout: 320px */
+/* Wide Mobile Layout: 480px */
+@media (min-width: 1200px){
+  #sidebar-filter {
+    position: absolute;
+    top: -50px;
+    left: 900px;
+  }
+}
+@media (min-width: 991px) and (max-width: 1199px) {
+  #sidebar-filter {
+    position: absolute;
+    top: -50px;
+    left: 750px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #sidebar-filter {
+    position: absolute;
+    top: -50px;
+    left: 520px;
+  }
+}
+@media (min-width: 575px) and (max-width: 768px) {
+  #sidebar-filter {
+    position: absolute;
+    top: 835px;
+    left: 408px;
+  }
+  /*.lattest-product-area .b-40 .category-list{*/
+  /*  padding-top: 50px;*/
+  /*}*/
+}
+@media (min-width: 500px) and (max-width: 575px) {
+  #sidebar-filter {
+    position: absolute;
+    top: 845px;
+    left: 166px;
+  }
+  .lattest-product-area .b-40 .category-list{
+    padding-top: 50px;
+  }
+}
+@media (max-width: 499px){
+  #sidebar-filter {
+    position: absolute;
+    top: 924px;
+    left: 95px;
+  }
+}
+

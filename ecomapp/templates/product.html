@@ -9,15 +9,15 @@
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
 					<nav class="d-flex align-items-center justify-content-end">
-                        <h1>Описание продукта</h1>
+{#                        <h1><a style="font-size: 21px" href="{{ product.get_absolute_url }}">{{ product.title }}</a></h1>#}
                     </nav>
-					<nav class="d-flex align-items-center justify-content-end">
-						<a href="/">Главная<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="{{ product.category.get_absolute_url }}">{{ product.category.name }}<span class="lnr lnr-arrow-right"></span></a>
-					</nav>
-                    <nav class="d-flex align-items-center justify-content-end">
-                        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-                    </nav>
+{#					<nav class="d-flex align-items-center justify-content-end">#}
+{#						<a href="/">Главная<span class="lnr lnr-arrow-right"></span></a>#}
+{#                        <a href="{{ product.category.get_absolute_url }}">{{ product.category.name }}<span class="lnr lnr-arrow-right"></span></a>#}
+{#					</nav>#}
+{#                    <nav class="d-flex align-items-center justify-content-end">#}
+{#                        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>#}
+{#                    </nav>#}
 				</div>
 			</div>
 		</div>
@@ -26,6 +26,16 @@
     <!-- Single product area -->
     <div class="product_image_area">
 		<div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    <div class="d-flex flex-wrap align-items-center justify-content-start" style="font-family: inherit; font-size: 19px;
+                padding-bottom: 50px;">
+                        <a style="color: #666666" href="/"><i class="fas fa-home"></i> Главная <span class="lnr lnr-arrow-right"></span></a>
+                        <a style="color: #666666" href="{{ product.category.get_absolute_url }}"> {{ product.category.name }} <span class="lnr lnr-arrow-right"></span></a>
+                        <a style="color: #666666" href="{{ product.get_absolute_url }}"> {{ product.title }} </a>
+                    </div>
+                </div>
+            </div>
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
 					<div class="s_Product_carousel">
@@ -43,28 +53,56 @@
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
 						<h3 id="title" data-title="{{ product.title }}">{{ product.title }}</h3>
-						<h2>{{ product.price }} грн.</h2>
+                        <br>
 						<ul class="list">
 							<li><a class="active" href="{{ product.category.get_absolute_url }}"><span>Категория</span> : {{ product.category }}</a></li>
                             <li><a href="#"><span>Статус</span>{% if product.available is True %} : В наличии {% else %} : Нет в наличии {% endif %}</a></li>
+                            <li><a href="#"><span>Литраж</span> :  <i class="fas fa-oil-can" style="font-size: 28px"> {{ product.volume }} л</i></a></li>
 						</ul>
-
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
-						<div class="d-flex align-items-center">
-							<form action="{% url 'cart:CartAdd' product.id %}" method="post">
-                                {{ cart_product_form.as_p }}
-                                {% csrf_token %}
-                                <button class="btn primary-btn" style="border: none"><i class="fas fa-cart-arrow-down" style="padding-right: 10px"></i> В корзину</button>
-                            </form>
-						</div>
+                        {{ product.brief_description|safe }}
                         <br>
-                        <br>
+                        <div class="text-center" style="background: #f6f6f6; padding: 30px 30px 30px 30px; justify-content: space-around;">
+                            <h2 style="font-size: 28px">{{ product.price }} грн.</h2>
+                            <div class="d-flex cart-check-area justify-content-center">
+                                <form action="{% url 'cart:CartAdd' product.id %}" method="post">
+                                    {% csrf_token %}
+    {#                                {{ cart_product_form.as_p }}#}
+{#                                    {% for field in cart_product_form %}#}
+{#                                        <label style="display: none">{{ field.label_tag }}</label>#}
+{#                                        {{ field }}#}
+{#                                    {% endfor %}#}
+                                    <div class="card_area d-flex align-items-center">
+                                        <button class="btn primary-btn" style="border: none"><i class="fas fa-cart-arrow-down" style="padding-right: 10px"></i> В корзину</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+						<br>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+    <section class="product_description_area">
+		<div class="container">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Описание</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+					 aria-selected="false">Спецификации</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+					{{ product.description|safe }}
+				</div>
+				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+					{{ product.specs_description|safe }}
+				</div>
+            </div>
+        </div>
+    </section>
 	<!--================End Single Product Area =================-->
 {% endblock content %}

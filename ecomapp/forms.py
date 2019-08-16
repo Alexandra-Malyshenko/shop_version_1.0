@@ -3,6 +3,7 @@ from django import forms
 from django.utils import timezone
 from django.contrib.auth.models import User
 from .models import Product
+from decimal import Decimal
 
 
 class LoginForm(forms.Form):
@@ -64,20 +65,11 @@ class RegistrationForm(forms.ModelForm):
 
 
 
-CHOICES_OF_BRAND = [
-    ('1','1'),
-    ('2','2'),
-    ('3','3'),
-    ('4','4'),
-    ('5','5'),
-]
-
-
 def choices_of_volume():
     list_volume = []
     for product in Product.objects.all():
         if product.volume not in list_volume:
-            list_volume.append(int(product.volume))
+            list_volume.append(product.volume)
     list_volume.sort()
     return list_volume
 
@@ -87,12 +79,20 @@ def choices_of_brand():
     for product in Product.objects.all():
         if product.brand not in list_brand:
             list_brand.append(product.brand)
-    list_brand.sort()
     return list_brand
 
+def choices_of_sae():
+    list_sae = []
+    for product in Product.objects.all():
+        if product.sae not in list_sae and product.sae != 'True':
+            list_sae.append(product.sae)
+    list_sae.sort()
+    return list_sae
 
-PRODUCT_VOLUME_CHOICES = [(i, str(i)) for i in choices_of_volume()]
+
+PRODUCT_VOLUME_CHOICES = [(str(i), i) for i in choices_of_volume()]
 PRODUCT_BRAND_CHOICES = [(i, i) for i in choices_of_brand()]
+PRODUCT_SAE_CHOICES = [(i, i) for i in choices_of_sae()]
 
 
 
@@ -103,6 +103,8 @@ class ProductFilterForm(forms.Form):
                                                  widget=forms.CheckboxSelectMultiple)
     the_brand = forms.MultipleChoiceField(choices=PRODUCT_BRAND_CHOICES, required=False,
                                             widget=forms.CheckboxSelectMultiple)
+    the_sae = forms.MultipleChoiceField(choices=PRODUCT_SAE_CHOICES, required=False,
+                                          widget=forms.CheckboxSelectMultiple)
     ordering = forms.ChoiceField(label=None, required=False, choices=[
         ('title', 'по алфавиту'),
         ('price', 'цена по возрастанию'),

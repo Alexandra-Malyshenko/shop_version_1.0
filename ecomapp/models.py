@@ -79,6 +79,8 @@ class Product(models.Model):
     title = models.CharField(max_length=120, verbose_name="Название")
     slug = models.SlugField(blank=True, max_length=200, db_index=True)
     description = models.TextField(blank=True, verbose_name="Описание")
+    brief_description = models.TextField(default=True, blank=True, verbose_name="Краткое описание")
+    specs_description = models.TextField(default=True, blank=True, verbose_name="Спецификация")
     image = models.ImageField(upload_to=image_folder, verbose_name="Изображение товара")
     price = models.DecimalField(verbose_name="Цена", max_digits=9, decimal_places=2)
     volume = models.DecimalField(default=True, verbose_name="Объем", max_digits=4, decimal_places=1)

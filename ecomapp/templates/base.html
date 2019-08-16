@@ -61,8 +61,9 @@
 							<li class="nav-item active"><a class="nav-link" href="/">Главная</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Категории</a>
+								 aria-expanded="false" style="z-index: 199;">Категории</a>
 								<ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'all_categories' %}">Все продукты</a></li>
                                     {% for cat in categories %}
                                     <li class="nav-item"><a class="nav-link" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
                                     {% endfor %}
@@ -71,8 +72,14 @@
 							<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Контакты</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="{% url 'cart:CartDetail' %}" class="cart"><i class="fas fa-cart-arrow-down" style="font-size: 20px"></i></a></li>
-							<li class="nav-item">
+                            {% with total_items=cart|length %}
+                                {% if cart|length > 0 %}
+							        <li class="nav-item"><a href="{% url 'cart:CartDetail' %}" class="cart" style="color: black; font-size: 18px;"><i class="fas fa-cart-arrow-down" style="font-size: 20px"></i>({{ total_items }})</a></li>
+                                {% else %}
+                                    <li class="nav-item"><a href="{% url 'cart:CartDetail' %}" class="cart" style="color: black; font-size: 18px;"><i class="fas fa-cart-arrow-down" style="font-size: 20px"></i>(0)</a></li>
+							    {% endif %}
+                            {% endwith %}
+                            <li class="nav-item">
                                 <button class="search" ><span class="lnr lnr-magnifier" id="search"></span></button>
 							</li>
 						</ul>
@@ -83,7 +90,7 @@
 		<div class="search_input" id="search_input_box">
 			<div class="container">
 				<form class="d-flex justify-content-between" action="{% url 'product_search' %}" method="get">
-					<input type="text" class="form-control" id="search_input" name="q" placeholder="Search Here">
+					<input type="text" class="form-control" id="search_input" name="q" placeholder="Поиск">
 					<button type="submit" class="btn"></button>
 					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
 				</form>
@@ -102,38 +109,39 @@
 						<!-- single-slide -->
 						<div class="row single-slide align-items-center d-flex">
 							<div class="col-lg-5 col-md-6">
-								<div class="banner-content">
-									<h1>Выбери масло <br>для машины!</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
-									</div>
+								<div class="banner-content" >
+									<h1><a href="https://www.castrol.com/ru_ru/russia/about-us/history.html" style="text-decoration: none; color: black">
+                                        История<br>Castrol</a></h1>
+									<p style="color: black;">
+                                        Компания Castrol была основана Чарльзом «Чирс» Вейкфилдом под названием «CC Wakefield & Company».
+                                        В 1899 году, компания начала разрабатывать смазочные материалы специально для двух
+                                        совершенно новых на то время моторизованных устройств: автомобиля и самолета.
+                                    </p>
 								</div>
 							</div>
 							<div class="col-lg-7">
 								<div class="banner-img">
-									<img class="img-fluid" src="{% static 'img/banner/banner-img-2.png' %}" alt="">
+									<img class="img-fluid" src="{% static 'img/banner/banner-img-6.png' %}" alt="" style="padding-top: 150px;">
 								</div>
 							</div>
 						</div>
 						<!-- single-slide -->
 						<div class="row single-slide">
 							<div class="col-lg-5">
-								<div class="banner-content">
-									<h1>Castrol - <br>самое то!</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
-									</div>
+								<div class="banner-content" style="padding-top: 150px;">
+									<h1><a href="http://www.automaster.net.ua/artykuly/marsohod-insight-rabotaet-na-smazochnyh-materialah-castrol,51625" style="text-decoration: none; color: black">
+                                        Castrol - <br>на Марсе!</a>
+                                    </h1>
+									<p style="color: black;">Марсоход InSight 2018 работает на смазочных материалах Castrol.
+                                        NASA сотрудничает с компанией Castrol с 1960-х годов.
+                                        Смазочные материалы бренда использовались в миссиях «Аполлонов», в телескопе «Хаббл», на МКС, при запусках множества спутников,
+                                        а также в предыдущих марсианских миссиях.</p>
 								</div>
 							</div>
 							<div class="col-lg-7">
 								<div class="banner-img">
-									<img class="img-fluid" src="{% static 'img/banner/banner-img-1.png' %}" alt="">
+									<img class="img-fluid" src="{% static 'img/banner/banner-img-5.png' %}" alt="" style="padding-top: 150px;">
+
 								</div>
 							</div>
 						</div>
@@ -164,8 +172,8 @@
 						<div class="f-icon">
 							<img src="{% static 'img/features/f-icon2.png' %}" alt="">
 						</div>
-						<h6>Политика возврата</h6>
-						<p>Вы можете вернуть товар в течении 14 дней</p>
+						<h6>Lorem ipsum</h6>
+						<p>Lorem Ipsum dolor sit amet.</p>
 					</div>
 				</div>
 				<!-- single features -->
@@ -174,8 +182,8 @@
 						<div class="f-icon">
 							<img src="{% static 'img/features/f-icon3.png' %}" alt="">
 						</div>
-						<h6>Поддержка 24/7</h6>
-						<p>Вы можете обращаться в удобное для вас время</p>
+						<h6>Бесплатная консультация</h6>
+						<p>Помощь при подборе масла для автомобиля</p>
 					</div>
 				</div>
 			</div>
@@ -190,71 +198,73 @@
 				<div class="col-lg-8 col-md-12">
 					<div class="row">
                         {% for cat in categories %}
-                            {% if cat.slug == 'masljanye-filtry' %}
+                            {% if cat.slug == 'transmissionnye-masla' %}
                             <div class="col-lg-4 col-md-4">
-                                <a href="{{ cat.get_absolute_url }}">
-                                    <div class="single-deal">
+                                <div class="single-deal">
+                                    <a href="{{ cat.get_absolute_url }}">
                                         <div class="overlay"></div>
-                                        <img class="img-fluid w-100" style="height: 200px; background-size: cover;" src="{% static 'img/category/c5.jpg' %}" alt="" >
+                                        <img class="img-fluid w-100"  src="{% static 'img/category/picture-6.jpg' %}" alt="" >
                                         <div class="deal-details">
-                                            <h6 class="deal-title">Маслянные фильтры</h6>
+                                            <h6 class="deal-title">Трансмиссонные масла</h6>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                            {% elif cat.slug == 'motornye-masla-dlja-gruzovyh-avtomobilej' %}
+                            {% endif %}
+                        {% endfor %}
+                        {% for cat in categories %}
+                            {% if cat.slug == 'motornye-masla-dlja-gruzovyh-avtomobilej' %}
                             <div class="col-lg-8 col-md-8">
-                                <a href="{{ cat.get_absolute_url }}">
-                                    <div class="single-deal">
+                                <div class="single-deal">
+                                    <a href="{{ cat.get_absolute_url }}">
                                         <div class="overlay"></div>
-                                        <img class="img-fluid w-100" style="height: 200px;background-size: cover;" src="{% static 'img/category/c51.jpg' %}"alt="">
+                                        <img class="img-fluid w-100" src="{% static 'img/category/picture-1.jpg' %}"alt="">
                                         <div class="deal-details">
-                                            <h6 class="deal-title">Моторные масла для ГА</h6>
+                                            <h6 class="deal-title">Моторные масла для Грузовых автомобилей</h6>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
                             {% elif cat.slug == 'motornye-masla-dlja-legkovyh-avtomobilej' %}
                             <div class="col-lg-8 col-md-8">
-                                <a href="{{ cat.get_absolute_url }}">
-                                    <div class="single-deal">
+                                <div class="single-deal">
+                                    <a href="{{ cat.get_absolute_url }}">
                                         <div class="overlay"></div>
-                                        <img class="img-fluid w-100" style="height: 200px; background-size: cover;" src="{% static 'img/category/c33.jpg' %}" alt="">
+                                        <img class="img-fluid w-100"  src="{% static 'img/category/picture-2.jpg' %}" alt="">
                                         <div class="deal-details">
-                                            <h6 class="deal-title">Моторные масла для ЛА</h6>
+                                            <h6 class="deal-title">Моторные масла для Легковых автомобилей</h6>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
                             {% elif cat.slug == 'ohlazhdajuschie-zhidkosti' %}
                             <div class="col-lg-4 col-md-4">
-                                <a href="{{ cat.get_absolute_url }}">
-                                    <div class="single-deal">
+                                <div class="single-deal">
+                                    <a href="{{ cat.get_absolute_url }}">
                                         <div class="overlay"></div>
-                                        <img class="img-fluid w-100" style="height: 200px;background-size: cover;" src="{% static 'img/category/c42.jpg' %}" alt="">
+                                        <img class="img-fluid w-100"  src="{% static 'img/category/picture-3.jpg' %}" alt="">
                                         <div class="deal-details">
                                             <h6 class="deal-title">Охлаждающие жидкости</h6>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-
+                        {% endif %}
+                        {% endfor %}
 					</div>
 				</div>
-                {% elif cat.slug == 'transmissionnye-masla' %}
+
                 <div class="col-lg-4 col-md-6">
-                    <a href="{{ cat.get_absolute_url }}">
-                        <div class="single-deal">
+                    <div class="single-deal">
+                        <a href="{% url 'all_categories' %}">
                             <div class="overlay"></div>
-                            <img class="img-fluid w-100" style="background-size: cover;" src="{% static 'img/category/c52.jpg' %}">
+                            <img class="img-fluid w-100" src="{% static 'img/category/picture-7.jpg' %}">
                             <div class="deal-details">
-                                <h6 class="deal-title">Трансмиссонные масла</h6>
+                                <h6 class="deal-title">Все продукты</h6>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-                            {% endif %}
-                        {% endfor %}
 			</div>
 		</div>
 	</section>
@@ -264,31 +274,29 @@
 	<section class="owl-carousel active-product-area section_gap">
 		<!--  products slide -->
 		{% for cat in categories %}
+        {% if cat.slug != 'masljanye-filtry' and cat.slug != 'industrialnye-masla' %}
         <div class="single-product-slider">
 			<div class="container">
                 <div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1>{{ cat.name }}</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua.</p>
-						</div>
+							<h1><a style="text-decoration: none; color: black" class="nav-link" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></h1>
+                        </div>
 					</div>
 				</div>
 				<div class="row">
 					<!-- single product -->
                     {% for prod in products %}
                      {% if prod.category == cat %}
-                        {% if forloop.counter <= 4 %}
+                        {% if cat.slug != 'masljanye-filtry' and cat.slug != 'industrialnye-masla' %}
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">
-                                    <img class="img-fluid" src="{{ prod.image.url }}" alt="" style="width: 320px; height: 250px">
+                                <a href="{{ prod.get_absolute_url }}" >
+                                    <img class="img-fluid" src="{{ prod.image.url }}" alt="">
                                 </a>
                                 <div class="product-details">
                                     <div style="height: 57px;">
-                                        <h6><a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">{{ prod.title }}</a></h6>
+                                        <h6 class="text-center"><a href="{{ prod.get_absolute_url }}" style="text-decoration: none; color: #0f0f0f">{{ prod.title }}</a></h6>
                                     </div>
                                     <div class="price text-center s_product_text" style="margin-top: 0px;">
                                         <h2>{{ prod.price }} грн.</h2>
@@ -309,6 +317,7 @@
 				</div>
 			</div>
 		</div>
+        {% endif %}
         {% endfor %}
 	</section>
 
@@ -320,7 +329,7 @@
 	<footer class="footer-area section_gap">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3  col-md-6 col-sm-6">
+				<div class="col-lg-3  col-md-12 col-sm-12">
 					<div class="single-footer-widget">
 						<h6>Доставка</h6>
 						<p>
@@ -329,7 +338,7 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="col-lg-9 col-md-12 col-sm-12">
 					<div class="single-footer-widget">
 						<h6>Контакты</h6>
 

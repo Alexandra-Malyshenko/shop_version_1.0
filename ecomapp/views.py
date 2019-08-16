@@ -29,9 +29,17 @@ def base_view(request):
     products = Product.objects.filter(available=True)
     cart = Cart(request)
     cart_product_form = CartAddProductForm()
+    list_products = []
+    counter = 0
+    for category in categories:
+        for prod in products:
+            if (prod.category == category) and (counter <=3):
+                counter += 1
+                list_products.append(prod)
+        counter = 0
     context = {
         'categories': categories,
-        'products': products,
+        'products': list_products,
         'cart': cart,
         'cart_product_form': cart_product_form,
     }
@@ -59,6 +67,20 @@ def category_view(request, category_slug):
     category = Category.objects.get(slug=category_slug)
     categories = Category.objects.all()
     products = Product.objects.filter(available=True, category=category)
+
+    volume = []
+    for item in products:
+        volume.append(float(item.volume))
+    volume = list(set(volume))
+    volume_ser = (json.dumps(volume))
+
+    sae = []
+    for item in products:
+        if item.sae not in sae:
+            sae.append(item.sae)
+    sae = list(set(sae))
+    sae_ser = (json.dumps(sae))
+
     # sort_form = SortFilterForm(request.GET)
     # filter_form = filter_form_search(request, category_slug)
     filter_form = ProductFilterForm(request.GET)
@@ -75,9 +97,21 @@ def category_view(request, category_slug):
         if filter_form.cleaned_data["ordering"]:
             products = products.order_by(filter_form.cleaned_data["ordering"])
 
-        # if sort_form.cleaned_data["ordering"]:
-        #     products = products.order_by(sort_form.cleaned_data["ordering"])
+        if filter_form.cleaned_data["the_brand"]:
+            list_items = filter_form.cleaned_data["the_brand"]
+            list_items_=[]
+            for i in list_items:
+                list_items_.append(i)
 
+            products = products.filter(brand__name__in=list_items_)
+
+        if filter_form.cleaned_data["the_sae"]:
+            list_items = filter_form.cleaned_data["the_sae"]
+            list_items_=[]
+            for i in list_items:
+                list_items_.append(i)
+
+            products = products.filter(sae__in=list_items_)
 
         if filter_form.cleaned_data["the_choices"]:
 
@@ -85,9 +119,10 @@ def category_view(request, category_slug):
             items_ =[]
             if items:
                 for i in items:
-                    items_.append(int(i))
+                    items_.append(i)
 
                 products = products.filter(volume__in=items_)
+
 
 
     current_page = Paginator(products, 6)
@@ -101,6 +136,17 @@ def category_view(request, category_slug):
         # Если вышли за последнюю страницу, то возвращаем последнюю
         products = current_page.page(current_page.num_pages)
 
+    context = {
+        'products': products,
+        'categories': categories,
+        'category': category,
+        'cart': cart,
+        'cart_product_form': cart_product_form,
+        'filter_form': filter_form,
+        'volume': volume_ser,
+        'sae': sae_ser,
+        # 'sort_form': sort_form,
+    }
 
     # products = paginator.page(page)
     # paginator = Paginator(products, 6)
@@ -125,15 +171,6 @@ def category_view(request, category_slug):
     #     products = products.order_by(ordering)
 
 
-    context = {
-        'products': products,
-        'categories': categories,
-        'category': category,
-        'cart': cart,
-        'cart_product_form': cart_product_form,
-        'filter_form': filter_form,
-        # 'sort_form': sort_form,
-    }
 
     return render(request, 'category.html', context)
 
@@ -142,6 +179,113 @@ def category_view(request, category_slug):
 #         items = items.order_by(form.cleaned_data["ordering"])
 #     return items
 
+def all_category_view(request):
+    cart_product_form = CartAddProductForm()
+    cart = Cart(request)
+    categories = Category.objects.all()
+    products = Product.objects.filter(available=True)
+
+    volume = []
+    for item in products:
+        volume.append(float(item.volume))
+    volume = list(set(volume))
+    volume_ser = (json.dumps(volume))
+
+    sae = []
+    for item in products:
+        sae.append(item.sae)
+    sae = list(set(sae))
+    sae_ser = (json.dumps(sae))
+
+    # sort_form = SortFilterForm(request.GET)
+    # filter_form = filter_form_search(request, category_slug)
+    filter_form = ProductFilterForm(request.GET)
+    if filter_form.is_valid():
+
+        # products = sort_by(filter_form, products)
+
+        if filter_form.cleaned_data["min_price"]:
+            products = products.filter(price__gte=filter_form.cleaned_data["min_price"])
+
+        if filter_form.cleaned_data["max_price"]:
+            products = products.filter(price__lte=filter_form.cleaned_data["max_price"])
+
+        if filter_form.cleaned_data["ordering"]:
+            products = products.order_by(filter_form.cleaned_data["ordering"])
+
+        if filter_form.cleaned_data["the_brand"]:
+            list_items = filter_form.cleaned_data["the_brand"]
+            list_items_=[]
+            for i in list_items:
+                list_items_.append(i)
+
+            products = products.filter(brand__name__in=list_items_)
+
+        if filter_form.cleaned_data["the_sae"]:
+            list_items = filter_form.cleaned_data["the_sae"]
+            list_items_=[]
+            for i in list_items:
+                list_items_.append(i)
+
+            products = products.filter(sae__in=list_items_)
+
+        if filter_form.cleaned_data["the_choices"]:
+
+            items = filter_form.cleaned_data["the_choices"]
+            items_ =[]
+            if items:
+                for i in items:
+                    items_.append(i)
+
+                products = products.filter(volume__in=items_)
+
+
+    current_page = Paginator(products, 6)
+    page = request.GET.get('page')
+    try:
+        products = current_page.page(page)
+    except PageNotAnInteger:
+        # Если None, то выбираем первую страницу
+        products= current_page.page(1)
+    except EmptyPage:
+        # Если вышли за последнюю страницу, то возвращаем последнюю
+        products = current_page.page(current_page.num_pages)
+
+    context = {
+        'products': products,
+        'categories': categories,
+        'cart': cart,
+        'cart_product_form': cart_product_form,
+        'filter_form': filter_form,
+        'volume': volume_ser,
+        'sae': sae_ser,
+        # 'sort_form': sort_form,
+    }
+
+    # products = paginator.page(page)
+    # paginator = Paginator(products, 6)
+    # page = request.GET.get('page')
+    # try:
+    #     products = paginator.page(page)
+    # except PageNotAnInteger:
+    #     # If page is not an integer, deliver first page.
+    #     products = paginator.page(1)
+    # except EmptyPage:
+    #     # If page is out of range (e.g. 9999), deliver last page of results.
+    #     products = paginator.page(paginator.num_pages)
+
+    # if sort_form.is_valid():
+    #     if sort_form.cleaned_data["ordering"]:
+    #         products = products.order_by(sort_form.cleaned_data["ordering"])
+
+    # if request.is_ajax():  # os request.GET()
+    #     ordering = request.POST.get("sort_type")
+    #     # category_slug = request.POST.get("category_slug")
+    #     # category = Category.objects.get(name=category_slug)
+    #     products = products.order_by(ordering)
+
+
+    return render(request, 'all_categories.html', context)
 
 
 def contact_view(request):
@@ -195,27 +339,15 @@ def product_search_view(request):
 
                     found_search = found_search.filter(volume__in=items_)
 
-
-    current_page = Paginator(found_search, 6)
-    page = request.GET.get('page')
-    try:
-        found_search = current_page.page(page)
-    except PageNotAnInteger:
-        # Если None, то выбираем первую страницу
-        found_search = current_page.page(1)
-    except EmptyPage:
-        # Если вышли за последнюю страницу, то возвращаем последнюю
-        found_search = current_page.page(current_page.num_pages)
-
-    context ={
-        'categories': categories,
-        'cart': cart,
-        'cart_product_form': cart_product_form,
-        'products': products,
-        'found_search': found_search,
-        'filter_form': filter_form
-    }
-    return render(request, 'search.html', context)
+        context ={
+            'categories': categories,
+            'cart': cart,
+            'cart_product_form': cart_product_form,
+            'products': products,
+            'found_search': found_search,
+            'filter_form': filter_form
+        }
+        return render(request, 'search.html', context)
 
 
 # def sorting_products_view(request):

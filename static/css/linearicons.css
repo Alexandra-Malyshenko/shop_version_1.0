@@ -391,7 +391,8 @@
 	content: "\e879";
 }
 .lnr-arrow-right:before {
-	content: "\e87a";
+	/*content: "\e87a";*/
+	content: "/\00a0";
 }
 .lnr-move:before {
 	content: "\e87b";

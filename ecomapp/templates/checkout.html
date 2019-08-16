@@ -2,30 +2,43 @@
 
 
 {% block content %}
-<h3 class="text-center">Оформление заказа</h3>
-<br>
-<table class="table table-striped table-hover">
-    <tr>
-        <td class="text-center"><strong>Товар</strong></td>
-        <td class="text-center"><strong>Количество</strong></td>
-        <td class="text-center"><strong>Цена</strong></td>
-        <td class="text-center"></td>
-    </tr>
-    {% for item in cart %}
-        <tr>
-            <td class="text-center">{{ item.product.title }}</td>
-            <td class="text-center">{{ item.quantity }}</td>
-            <td class="text-center">{{ item.total_price }} грн.</td>
-            <td></td>
-        </tr>
-    {% endfor %}
-        <tr class="table gradient-bg-reverse">
-            <td></td>
-            <td class="text-center"><strong>Итого: </strong></td>
-            <td class="text-center" ><strong>{{ cart.get_total_price }} грн.</strong></td>
-            <td></td>
-        </tr>
-</table>
-<a href="{% url 'create_order' %}" class="pull-right"><button class="btn btn-success">Оформить заказ</button></a>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="d-flex flex-wrap align-items-center justify-content-start" style="font-family: inherit; font-size: 19px;
+                    padding-bottom: 50px;">
+                <a style="color: #666666" href="/"><i class="fas fa-home"></i> Главная <span class="lnr lnr-arrow-right"></span></a>
+                <a style="color: #666666" href="">Оформление заказа</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h3 class="text-center">Оформление заказа</h3>
+        <br>
+        <table class="table table-striped table-hover">
+            <tr>
+                <td class="text-center"><strong>Товар</strong></td>
+                <td class="text-center"><strong>Количество</strong></td>
+                <td class="text-center"><strong>Цена</strong></td>
+                <td class="text-center"></td>
+            </tr>
+            {% for item in cart %}
+                <tr>
+                    <td class="text-center">{{ item.product.title }}</td>
+                    <td class="text-center">{{ item.quantity }}</td>
+                    <td class="text-center">{{ item.total_price }} грн.</td>
+                    <td></td>
+                </tr>
+            {% endfor %}
+                <tr class="table gradient-bg-reverse">
+                    <td></td>
+                    <td class="text-center"><strong>Итого: </strong></td>
+                    <td class="text-center" ><strong>{{ cart.get_total_price }} грн.</strong></td>
+                    <td></td>
+                </tr>
+        </table>
+        <a href="{% url 'create_order' %}" class="pull-right"><button class="btn btn-success">Оформить заказ</button></a>
+    </div>
+</div>
 
 {% endblock %}
