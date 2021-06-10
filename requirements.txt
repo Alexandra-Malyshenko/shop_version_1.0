@@ -6,7 +6,7 @@ chardet==2.3.0
 cssselect2==0.2.1
 defer==1.0.6
 defusedxml==0.6.0
-Django==2.2.1
+Django==2.2.24
 django-crispy-forms==1.7.2
 html5lib==1.0.1
 mysqlclient==1.4.2.post1
